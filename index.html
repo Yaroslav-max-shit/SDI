@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#232629">
+<title>СДИ — строительство автодорог в Чувашии и Приволжье</title>
+<meta name="description" content="ООО «СДИ», Чебоксары. Асфальтирование, земляные работы, инженерные сети и благоустройство. Собственная техника и бригады, полный цикл.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ tokens & reset ============ */
+:root{
+  --graphite:#232629; --asphalt:#3A3F43; --concrete:#F4F1EC; --paper:#ECE7DE;
+  --orange:#E8571E; --orange-d:#CF4A15; --steel:#4A6E8A; --steel-l:#7FA1BC;
+  --ink:var(--graphite); --ink-2:rgba(35,38,41,.66); --ink-3:rgba(35,38,41,.42);
+  --line:rgba(35,38,41,.14); --line-2:rgba(35,38,41,.08);
+  --w:#F4F1EC; --w-2:rgba(244,241,236,.68); --w-3:rgba(244,241,236,.45);
+  --wline:rgba(244,241,236,.15);
+  --sora:'Sora',sans-serif; --man:'Manrope',sans-serif; --mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.16,.84,.44,1);
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+html.locked,body.menu-open{overflow:hidden}
+body{font:400 1rem/1.65 var(--man);color:var(--ink);background:var(--concrete);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{list-style:none}
+::selection{background:var(--orange);color:var(--graphite)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--sora);font-weight:600;letter-spacing:-.02em;line-height:1.16}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px)}
+section{padding-block:clamp(72px,9vw,120px)}
+.dark{background:var(--graphite);color:var(--w)}
+.dark .lead{color:var(--w-2)}
+
+/* concrete-paper texture, <=4% opacity, on light sections */
+.tex{position:relative}
+.tex::before{content:"";position:absolute;inset:0;background-image:var(--noise);background-size:140px;opacity:.04;pointer-events:none;z-index:1}
+.tex>*{position:relative;z-index:2}
+
+/* ============ shared editorial patterns ============ */
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;border-top:1px solid var(--line);padding-top:16px;margin-bottom:clamp(36px,5vw,58px)}
+.dark .sec-head{border-color:var(--wline)}
+.sh-l{font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);display:inline-flex;align-items:center;gap:12px}
+.dark .sh-l{color:var(--w-2)}
+.dash{width:15px;height:5px;background:currentColor;transform:skewX(-24deg);flex:none}
+.sh-r{font:400 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:right;max-width:300px}
+.dark .sh-r{color:var(--w-3)}
+h2{font-size:clamp(1.85rem,3.4vw,2.85rem);letter-spacing:-.025em;max-width:24ch}
+.lead{font-size:1.05rem;color:var(--ink-2);max-width:54ch}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 .8rem/1 var(--sora);letter-spacing:.09em;text-transform:uppercase;padding:17px 26px;border:1px solid transparent;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.btn-primary{background:var(--orange);color:var(--graphite)}
+.btn-primary:hover{background:var(--orange-d)}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{border-color:rgba(244,241,236,.42);color:var(--w)}
+.btn-ghost:hover{background:var(--concrete);color:var(--graphite);border-color:var(--concrete)}
+.btn-steel{border-color:var(--steel);color:var(--steel)}
+.btn-steel:hover{background:var(--steel);color:#fff}
+.btn.busy{opacity:.65;pointer-events:none}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ header ============ */
+.header{position:fixed;inset:0 0 auto;z-index:100;--fg:var(--w);--mut:var(--w-3);--hbg:rgba(26,29,31,.55);border-bottom:1px solid transparent;transition:background .35s,border-color .35s}
+.header.solid{--fg:var(--graphite);--mut:rgba(35,38,41,.55);--hbg:var(--concrete);background:rgba(244,241,236,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+body.menu-open .header{--fg:var(--w);--hbg:rgba(26,29,31,.55);background:transparent;border-bottom-color:transparent}
+.header-in{display:flex;align-items:center;gap:28px;height:74px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.logo-mark{width:40px;height:40px;background:var(--fg);color:var(--hbg);display:grid;place-items:center;font:700 14px/1 var(--sora);letter-spacing:.02em;flex:none;transition:background .35s,color .35s}
+.logo-txt{display:flex;flex-direction:column;line-height:1.25}
+.logo-txt b{font:700 15px/1.2 var(--sora);letter-spacing:.05em}
+.logo-txt small{font:500 9.5px/1.3 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{position:relative;text-decoration:none;font:600 13.5px/1 var(--man);color:var(--fg);padding:7px 0}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);transition:width .3s var(--ease)}
+.nav a:hover::after,.nav a.act::after{width:100%}
+.head-right{display:flex;align-items:center;gap:22px}
+.head-phone{font:500 14px/1 var(--mono);color:var(--fg);text-decoration:none;letter-spacing:.02em}
+.head-phone:hover{color:var(--orange)}
+.header .btn{padding:13px 20px}
+.burger{display:none;width:42px;height:42px;position:relative}
+.burger span{position:absolute;left:9px;right:9px;height:2px;background:var(--fg);transition:transform .3s var(--ease),top .3s var(--ease)}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:24px}
+body.menu-open .burger span:nth-child(1){top:20px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){top:20px;transform:rotate(-45deg)}
+
+.mnav{position:fixed;inset:0;z-index:90;background:var(--graphite);color:var(--w);display:flex;flex-direction:column;padding:110px clamp(20px,6vw,44px) 40px;visibility:hidden;opacity:0;transition:opacity .35s var(--ease),visibility .35s}
+body.menu-open .mnav{visibility:visible;opacity:1}
+.mnav-links{display:flex;flex-direction:column;margin-bottom:auto}
+.mnav-links a{font:600 clamp(1.6rem,6.5vw,2.3rem)/1.45 var(--sora);letter-spacing:-.02em;color:var(--w);text-decoration:none;border-bottom:1px solid var(--wline);padding:12px 2px;display:flex;justify-content:space-between;align-items:center}
+.mnav-links a small{font:500 12px var(--mono);letter-spacing:.12em;color:var(--w-3)}
+.mnav-foot{display:flex;flex-direction:column;gap:6px;padding-top:30px;color:var(--w-3);font:400 12px/1.8 var(--mono);letter-spacing:.08em}
+.mnav-foot a{font:500 16px var(--mono);color:var(--w);text-decoration:none;padding-top:4px}
+
+/* ============ hero ============ */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;color:var(--w);overflow:hidden;background:var(--graphite)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.88) contrast(1.07) sepia(.16) brightness(.9);animation:kenburns 8s ease-out both;transform-origin:52% 42%}
+@keyframes kenburns{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,27,29,.5),rgba(24,27,29,.22) 42%,rgba(24,27,29,.84))}
+.hero-coords{position:absolute;right:26px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:500 11px var(--mono);letter-spacing:.24em;color:rgba(244,241,236,.5)}
+.hero-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:130px;padding-bottom:52px}
+.eyebrow{font:500 12px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,236,.78);display:flex;align-items:center;gap:12px;margin-bottom:26px;animation:rise .8s var(--ease) both .05s}
+.hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem);font-weight:700;letter-spacing:-.03em;line-height:1.08;animation:rise .8s var(--ease) both .15s}
+.hero-sub{max-width:56ch;font-size:clamp(1rem,1.35vw,1.12rem);color:rgba(244,241,236,.82);margin:22px 0 36px;animation:rise .8s var(--ease) both .28s}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;animation:rise .8s var(--ease) both .4s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.trust{position:relative;border-top:1px solid rgba(244,241,236,.22);background:rgba(24,27,29,.38);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.trust-item{padding:22px 30px 24px;display:flex;flex-direction:column;gap:5px}
+.trust-item+.trust-item{border-left:1px solid rgba(244,241,236,.18)}
+.t-num{font:500 clamp(1.7rem,3vw,2.3rem)/1 var(--mono);letter-spacing:-.02em}
+.t-num.acc{color:var(--orange)}
+.t-label{font:500 12.5px/1.5 var(--man);color:rgba(244,241,236,.66)}
+
+/* ============ services ============ */
+.svc-grid{display:grid;grid-template-columns:minmax(0,4.2fr) minmax(0,7.8fr);gap:clamp(40px,5vw,84px);align-items:start}
+.svc-side{position:sticky;top:112px}
+.svc-note{margin-top:30px;font:500 11.5px/1.8 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:flex;gap:10px;align-items:center}
+.svc-note svg{width:15px;height:15px;color:var(--steel);flex:none}
+.svc{background:#F9F7F2;border:1px solid var(--line-2);border-left:2px solid transparent;transition:border-color .3s,background .3s}
+.svc:hover{background:#fff}
+.svc.open{border-left-color:var(--orange);background:#fff}
+.svc+.svc{margin-top:10px}
+.svc-head{width:100%;display:flex;align-items:center;gap:18px;text-align:left;padding:21px 24px}
+.svc-code{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--steel);border:1px solid rgba(74,110,138,.4);padding:6px 8px;flex:none;min-width:56px;text-align:center}
+.svc-title{font:600 1.1rem/1.3 var(--sora);letter-spacing:-.015em}
+.svc-x{margin-left:auto;flex:none;width:34px;height:34px;border:1px solid var(--line);display:grid;place-items:center;position:relative;transition:transform .4s var(--ease),border-color .3s}
+.svc-x::before,.svc-x::after{content:"";position:absolute;left:50%;top:50%;background:var(--ink)}
+.svc-x::before{width:14px;height:2px;transform:translate(-50%,-50%)}
+.svc-x::after{width:2px;height:14px;transform:translate(-50%,-50%)}
+.svc.open .svc-x{transform:rotate(45deg);border-color:var(--orange)}
+.svc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.svc.open .svc-body{grid-template-rows:1fr}
+.svc-body-in{overflow:hidden;min-height:0}
+.svc-body-cnt{padding:2px 24px 28px calc(24px + 74px)}
+.svc-desc{color:var(--ink-2);max-width:58ch;font-size:.96rem}
+.svc-items{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px 26px}
+.svc-items li{position:relative;padding-left:18px;font-size:.9rem}
+.svc-items li::before{content:"";position:absolute;left:0;top:.66em;width:8px;height:2px;background:var(--steel);transform:skewX(-24deg)}
+
+/* ============ projects ============ */
+.proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,2.4vw,30px)}
+.proj{grid-column:span 6;cursor:pointer;display:flex;flex-direction:column;text-align:left}
+.proj.s7{grid-column:span 7}
+.proj.s5{grid-column:span 5}
+.proj-media{flex:1;min-height:250px;position:relative;overflow:hidden;background:#2C3034}
+.proj-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.9) contrast(1.06) brightness(.94);transition:filter .4s ease,transform .9s var(--ease)}
+.proj:hover .proj-media img,.proj:focus-visible .proj-media img{filter:grayscale(0) sepia(.16) saturate(.92) contrast(1.05);transform:scale(1.035)}
+.proj-role{position:absolute;top:14px;left:14px;font:500 10.5px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--w);background:rgba(26,29,31,.78);border:1px solid rgba(244,241,236,.22);padding:8px 11px}
+.proj-body{display:flex;justify-content:space-between;gap:16px;padding-top:18px}
+.proj-body h3{font-size:1.22rem;letter-spacing:-.015em}
+.proj-meta{margin-top:6px;font:500 11.5px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w-3)}
+.proj-arr{margin-top:2px;flex:none;color:var(--steel-l);opacity:0;transform:translate(-6px,6px);transition:.35s var(--ease)}
+.proj-arr svg{width:20px;height:20px}
+.proj:hover .proj-arr{opacity:1;transform:none;color:var(--orange)}
+.proj.wide{grid-column:1/-1;display:grid;grid-template-columns:7fr 5fr}
+.proj.wide .proj-media{min-height:320px}
+.proj.wide .proj-body{flex-direction:column;justify-content:center;gap:2px;padding:12px 0 12px clamp(24px,3.4vw,52px)}
+.proj.wide h3{font-size:1.55rem}
+.proj-note{margin-top:12px;font-size:.95rem;color:var(--w-2);max-width:48ch}
+.proj-hint{margin-top:34px;font:500 11px/1.7 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--w-3);display:flex;align-items:center;gap:10px}
+.proj-hint svg{width:14px;height:14px;color:var(--steel-l)}
+
+/* ============ lightbox ============ */
+.lb{position:fixed;inset:0;z-index:200;display:flex;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
+.lb.open{opacity:1;visibility:visible}
+.lb-back{position:absolute;inset:0;background:rgba(19,21,23,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lb-panel{position:relative;margin:auto;width:min(1160px,calc(100% - 28px));max-height:calc(100svh - 28px);background:var(--graphite);color:var(--w);border:1px solid var(--wline);display:grid;grid-template-columns:7fr 5fr;transform:translateY(14px) scale(.985);transition:transform .35s var(--ease);overflow:hidden}
+.lb.open .lb-panel{transform:none}
+.lb-media{position:relative;background:#1C1F21;min-height:340px}
+.lb-media img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s ease}
+.lb-media img.ready{opacity:1}
+.lb-count{position:absolute;left:16px;bottom:14px;font:500 11px var(--mono);letter-spacing:.12em;background:rgba(26,29,31,.74);padding:7px 10px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;display:grid;place-items:center;background:rgba(26,29,31,.74);color:var(--w);border:1px solid rgba(244,241,236,.22);transition:background .25s,color .25s,border-color .25s}
+.lb-nav:hover{background:var(--orange);border-color:var(--orange);color:var(--graphite)}
+.lb-nav svg{width:18px;height:18px}
+.lb-nav.prev{left:14px}.lb-nav.next{right:14px}
+.lb-info{padding:26px 28px 24px;display:flex;flex-direction:column;gap:13px;overflow:auto}
+.lb-top{display:flex;justify-content:space-between;align-items:center;font:500 11px var(--mono);letter-spacing:.16em;color:var(--w-3);text-transform:uppercase}
+.lb-close{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--wline);color:var(--w);transition:.25s}
+.lb-close:hover{background:var(--orange);border-color:var(--orange);color:var(--graphite)}
+.lb-close svg{width:17px;height:17px}
+.lb-title{font-size:1.32rem}
+.lb-meta{font:500 11px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w-3)}
+.lb-block{border-top:1px solid var(--wline);padding-top:13px}
+.lb-k{font:600 10.5px/1 var(--mono);letter-spacing:.18em;color:var(--steel-l);text-transform:uppercase}
+.lb-block p{margin-top:8px;font-size:.93rem;color:var(--w-2)}
+.lb-thumbs{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--wline)}
+.lb-thumb{width:58px;height:42px;overflow:hidden;border:1px solid transparent;opacity:.55;transition:.25s;padding:0;flex:none}
+.lb-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.7)}
+.lb-thumb:hover{opacity:.85}
+.lb-thumb.act{border-color:var(--orange);opacity:1}
+.lb-thumb.act img{filter:none}
+
+/* ============ quality band (texture divider) ============ */
+.band{position:relative;overflow:hidden;background:var(--graphite);color:var(--w);padding-block:clamp(72px,9vw,118px)}
+.band-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(.4)}
+.band .wrap{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:center}
+.band .eyebrow{margin-bottom:20px;animation:none}
+.band h2{color:var(--w);font-size:clamp(1.5rem,2.6vw,2.15rem)}
+.norms{display:flex;flex-direction:column}
+.norm{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--wline);padding:13px 2px;font:500 12px var(--mono);letter-spacing:.08em}
+.norm:last-child{border-bottom:1px solid var(--wline)}
+.norm span:last-child{color:var(--w-3);text-align:right}
+
+/* ============ process timeline ============ */
+.steps{--p:0;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,2.6vw,36px);position:relative}
+.steps::before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,rgba(35,38,41,.32) 0 15px,transparent 15px 28px)}
+.steps-fill{position:absolute;top:5px;left:0;height:2px;width:calc(var(--p)*100%);background:var(--orange);transition:width .2s linear}
+.steps-fill::after{content:"";position:absolute;right:-1px;top:50%;width:7px;height:13px;transform:translateY(-50%) skewX(-24deg);background:var(--orange)}
+.step{position:relative;padding-top:38px}
+.node{position:absolute;top:0;left:0;width:12px;height:12px;background:var(--concrete);border:2px solid rgba(35,38,41,.45);transform:rotate(45deg);transition:background .3s,border-color .3s}
+.step.on .node{background:var(--orange);border-color:var(--orange)}
+.step-k{font:600 12px var(--mono);letter-spacing:.16em;color:var(--ink-3)}
+.step h3{font-size:1.05rem;margin:10px 0 8px}
+.step p{font-size:.9rem;color:var(--ink-2)}
+
+/* ============ fleet ============ */
+.fleet-sec{background:var(--paper)}
+.fleet-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,84px);align-items:start}
+.fleet-side{position:sticky;top:112px}
+.crew{display:flex;gap:22px;align-items:flex-start;margin-top:34px;border-top:1px solid var(--line);padding-top:26px}
+.crew-num{font:500 clamp(3.4rem,6vw,4.6rem)/.9 var(--mono);color:var(--orange);letter-spacing:-.04em}
+.crew b{display:block;font:600 1.02rem/1.3 var(--sora);margin-bottom:6px}
+.crew p{font-size:.92rem;color:var(--ink-2);max-width:36ch}
+.fleet-note{margin-top:24px;font:500 11px/1.9 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.fleet-rows{border-top:1px solid var(--line)}
+.fleet-rows li{display:flex;gap:clamp(18px,2.4vw,32px);padding:17px 10px;border-bottom:1px solid var(--line);align-items:baseline;transition:background .25s}
+.fleet-rows li:hover{background:rgba(35,38,41,.04)}
+.f-q{font:500 1.7rem/1 var(--mono);min-width:58px}
+.f-t h4{font:600 1rem var(--sora);letter-spacing:-.01em}
+.f-t p{font-size:.86rem;color:var(--ink-2);margin-top:2px}
+.f-total{background:rgba(35,38,41,.045)}
+.f-total .f-q{font-weight:600}
+
+/* ============ about ============ */
+.about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,84px);align-items:start}
+.about-fig img{width:100%;aspect-ratio:4/4.6;object-fit:cover;filter:grayscale(.55) sepia(.14) contrast(1.05)}
+.about-fig figcaption{margin-top:12px;font:500 11px/1.8 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.about-txt h2{margin-bottom:24px}
+.about-txt p{margin-bottom:18px;max-width:58ch}
+.about-txt p:first-of-type{font-size:1.12rem}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.fact{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);padding:10px 13px;color:var(--ink-2)}
+
+/* ============ documents ============ */
+.docs-sec{background:var(--paper)}
+.doc-rows{border-top:1px solid var(--line)}
+.doc-row{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:clamp(18px,3vw,44px);padding:27px 0;border-bottom:1px solid var(--line);align-items:start}
+.d-key{font:600 12px/1.4 var(--mono);letter-spacing:.16em;color:var(--steel);padding-top:5px}
+.doc-row h3{font-size:1.12rem;margin-bottom:6px}
+.doc-row p{color:var(--ink-2);max-width:64ch;font-size:.95rem}
+.d-val{font:500 12px/1.6 var(--mono);letter-spacing:.1em;color:var(--ink-3);padding-top:8px;text-align:right;white-space:nowrap}
+.docs-foot{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;font:500 11px/1.9 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.docs-foot .btn{margin-left:auto}
+
+/* ============ contact ============ */
+.contact-grid{display:grid;grid-template-columns:minmax(0,6.5fr) minmax(0,5.5fr);gap:clamp(40px,6vw,96px)}
+.contact h2{margin-bottom:12px}
+.contact .lead{margin-bottom:36px}
+.field{margin-bottom:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field label{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--w-3);margin-bottom:9px}
+.field input,.field textarea{width:100%;background:rgba(244,241,236,.045);border:1px solid rgba(244,241,236,.18);color:var(--w);padding:14px 16px;font:400 .95rem/1.5 var(--man);border-radius:0;transition:border-color .25s,background .25s}
+.field input::placeholder,.field textarea::placeholder{color:rgba(244,241,236,.35)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--orange);background:rgba(244,241,236,.07)}
+.field textarea{resize:vertical;min-height:112px}
+.f-err{display:none;margin-top:7px;font:500 11px/1.5 var(--mono);letter-spacing:.05em;color:var(--orange)}
+.field.err input{border-color:var(--orange)}
+.field.err .f-err{display:block}
+.form-note{margin-top:16px;font:500 10.5px/1.9 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--w-3)}
+.form-done{display:none;flex-direction:column;align-items:flex-start;gap:10px;border:1px solid rgba(244,241,236,.22);padding:42px 38px}
+.c-form.sent .form-body{display:none}
+.c-form.sent .form-done{display:flex}
+.form-done svg{width:34px;height:34px;color:var(--orange)}
+.form-done h3{font-size:1.3rem}
+.form-done p{color:var(--w-2)}
+.link-reset{font:500 11px var(--mono);letter-spacing:.14em;color:var(--w-3);text-decoration:underline;text-underline-offset:4px;margin-top:8px}
+.link-reset:hover{color:var(--w)}
+.c-list{border-top:1px solid var(--wline);margin-bottom:30px}
+.c-list li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--wline);align-items:flex-start}
+.c-list svg{width:17px;height:17px;color:var(--steel-l);flex:none;margin-top:5px}
+.c-k{display:block;font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--w-3);margin-bottom:6px}
+.c-v{font:500 1.05rem/1.5 var(--man);text-decoration:none;display:block}
+.c-v.big{font:500 1.35rem var(--mono);letter-spacing:.01em}
+a.c-v:hover{color:var(--orange)}
+.c-map{border:1px solid var(--wline)}
+.c-map iframe{display:block;width:100%;height:262px;border:0;filter:grayscale(1) contrast(1.02) brightness(.92);transition:filter .5s ease}
+.c-map:hover iframe{filter:grayscale(0) contrast(1) brightness(.96)}
+.c-map figcaption{padding:11px 14px;border-top:1px solid var(--wline);font:500 10.5px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--w-3)}
+
+/* ============ footer ============ */
+.footer{background:#1C1F21;color:var(--w);padding-top:64px}
+.foot-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;padding-bottom:52px}
+.footer .logo{color:var(--w)}
+.footer .logo-mark{background:var(--w);color:#1C1F21}
+.footer .logo-txt small{color:rgba(244,241,236,.5)}
+.promise{margin-top:20px;font:600 1.3rem/1.4 var(--sora);letter-spacing:-.015em;max-width:16ch}
+.foot-nav{display:flex;gap:clamp(32px,4.5vw,72px);flex-wrap:wrap}
+.foot-nav .f-h{font:600 11px var(--mono);letter-spacing:.16em;color:var(--w-3);text-transform:uppercase;margin-bottom:14px}
+.foot-nav a{text-decoration:none;color:var(--w-2);font-size:.92rem;display:inline-block;padding:4px 0;transition:color .2s}
+.foot-nav a:hover{color:var(--w)}
+.foot-contacts li{padding:3px 0}
+.foot-contacts a{font:500 14px var(--mono)}
+.foot-contacts .f-addr{font:400 12px/1.8 var(--mono);color:var(--w-3)}
+.foot-line{height:3px;background:repeating-linear-gradient(90deg,rgba(244,241,236,.28) 0 44px,transparent 44px 82px)}
+.foot-legal{padding:22px 0 28px;display:flex;justify-content:space-between;gap:12px 32px;flex-wrap:wrap;font:400 11px/1.9 var(--mono);letter-spacing:.03em;color:rgba(244,241,236,.45)}
+
+/* ============ mobile sticky CTA bar ============ */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:none;align-items:center;gap:14px;background:var(--graphite);border-top:1px solid rgba(244,241,236,.16);padding:10px 14px calc(10px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .4s var(--ease)}
+.mbar.show{transform:none}
+.mbar-phone{display:flex;align-items:center;gap:10px;color:var(--w);text-decoration:none;font:500 13.5px var(--mono);flex:1;min-width:0}
+.mbar-phone svg{width:16px;height:16px;color:var(--steel-l);flex:none}
+.mbar .btn{padding:13px 18px}
+
+/* ============ responsive ============ */
+@media(max-width:1060px){.hero-coords{display:none}}
+@media(max-width:940px){
+  .nav{display:none}
+  .burger{display:block}
+  .head-right{margin-left:auto}
+}
+@media(max-width:920px){
+  .svc-grid,.fleet-grid,.about-grid,.contact-grid,.band .wrap{grid-template-columns:1fr}
+  .svc-side,.fleet-side{position:static}
+  .about-fig{order:2;max-width:520px}
+  .proj{grid-column:1/-1}
+  .proj.s7,.proj.s5{grid-column:1/-1}
+  .proj.wide{grid-template-columns:1fr}
+  .proj.wide .proj-body{padding:18px 0 0}
+  .lb-panel{grid-template-columns:1fr;overflow:auto}
+  .lb-media{min-height:0;aspect-ratio:16/10}
+  .lb-info{overflow:visible}
+}
+@media(max-width:860px){
+  .steps{grid-template-columns:1fr;gap:34px;padding-left:34px}
+  .steps::before{left:5px;top:4px;bottom:4px;width:2px;height:auto;background:repeating-linear-gradient(180deg,rgba(35,38,41,.32) 0 14px,transparent 14px 26px)}
+  .steps-fill{left:5px;top:4px;width:2px;height:calc(var(--p)*100%)}
+  .steps-fill::after{display:none}
+  .node{left:-34px;top:6px}
+}
+@media(max-width:760px){
+  .head-phone,.head-cta{display:none}
+  .mbar{display:flex}
+  .sh-r{display:none}
+}
+@media(max-width:640px){
+  .svc-head{gap:12px;padding:18px}
+  .svc-body-cnt{padding:2px 18px 24px 18px}
+  .svc-title{font-size:1rem}
+  .svc-items{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .doc-row{grid-template-columns:1fr;gap:10px}
+  .d-val{text-align:left;padding-top:0}
+  .docs-foot .btn{margin-left:0}
+  .trust-grid{grid-template-columns:1fr}
+  .trust-item+.trust-item{border-left:0;border-top:1px solid rgba(244,241,236,.18)}
+  .trust-item{padding:16px 4px}
+  .crew{flex-direction:column;gap:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-img{animation:none}
+  .eyebrow,.hero h1,.hero-sub,.hero-cta{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .steps-fill{transition:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}.svc-body{grid-template-rows:1fr}.svc.open .svc-x{transform:rotate(45deg)}</style></noscript>
+</head>
+<body>
+
+<!-- ======= sticky top bar ======= -->
+<header class="header" id="header">
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="СДИ — на главную">
+      <span class="logo-mark">СДИ</span>
+      <span class="logo-txt"><b>СДИ</b><small>Дорожное строительство · Чебоксары</small></span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#services">Услуги</a>
+      <a href="#projects">Проекты</a>
+      <a href="#about">О компании</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="head-right">
+      <a class="head-phone" href="tel:+78352202424">+7 (8352) 20-24-24</a>
+      <a class="btn btn-primary head-cta" href="#contact">Запросить смету</a>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="mnav" id="mnav" aria-hidden="true">
+  <nav class="mnav-links" aria-label="Мобильная навигация">
+    <a href="#services">Услуги <small>01</small></a>
+    <a href="#projects">Проекты <small>02</small></a>
+    <a href="#process">Как работаем <small>03</small></a>
+    <a href="#fleet">Техника <small>04</small></a>
+    <a href="#about">О компании <small>05</small></a>
+    <a href="#contact">Контакты <small>07</small></a>
+  </nav>
+  <div class="mnav-foot">
+    <a href="tel:+78352202424">+7 (8352) 20-24-24</a>
+    <a href="mailto:info@sdi21.ru">info@sdi21.ru</a>
+    <span>ПН–ПТ 8:00–18:00 · ЧЕБОКСАРЫ, ПР. МИРА, 9</span>
+  </div>
+</div>
+
+<!-- ======= hero ======= -->
+<section class="hero" id="top">
+  <img class="hero-img" src="https://picsum.photos/seed/sdi-hero-road/1920/1080.jpg" alt="Свежеуложенный асфальтобетон на строящейся дороге, вид с дрона" width="1920" height="1080" fetchpriority="high">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <span class="hero-coords" aria-hidden="true">56.1432° N · 47.2480° E — ЧЕБОКСАРЫ</span>
+  <div class="wrap hero-body">
+    <p class="eyebrow"><span class="dash"></span>ООО «СДИ» · Мы строим то, на чём стоит город</p>
+    <h1>Строительство автодорог<br>в Чувашии и&nbsp;Приволжье</h1>
+    <p class="hero-sub">Асфальтирование, земляные работы, инженерные сети и благоустройство — полный цикл собственной техникой и бригадами. От обследования участка до подписания акта.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Запросить смету <i data-lucide="arrow-right"></i></a>
+      <a class="btn btn-ghost" href="#projects">Смотреть проекты</a>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="wrap trust-grid">
+      <div class="trust-item">
+        <span class="t-num"><span class="count" data-count="2020">0</span></span>
+        <span class="t-label">год основания компании</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-num acc"><span class="count" data-count="214">0</span></span>
+        <span class="t-label">км дорог построено и отремонтировано</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-num"><span class="count" data-count="67">0</span></span>
+        <span class="t-label">контрактов завершено</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= services ======= -->
+<section class="tex" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>01 / Услуги</span>
+      <span class="sh-r">От земли до исполнительной документации</span>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-side">
+        <h2 class="reveal">Один подрядчик на&nbsp;весь цикл</h2>
+        <p class="lead reveal" style="margin-top:20px">Ключевые этапы мы не передаём на сторону: дороги, сети и благоустройство ведут свои бригады на своей технике. Каждая группа работ — отдельное направление с понятным составом и кодом ОКВЭД.</p>
+        <p class="svc-note reveal"><i data-lucide="mouse-pointer-click"></i>Нажмите на карточку — раскроется состав работ</p>
+      </div>
+      <div class="svc-list" data-stagger>
+
+        <article class="svc open reveal">
+          <button class="svc-head" aria-expanded="true">
+            <span class="svc-code">42.11</span>
+            <span class="svc-title">Автомобильные дороги</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Городские улицы, подъездные пути, внутриплощадочные проезды — от щебёночного основания до разметки. Работаем по проекту, а если проекта нет — составляем техническое решение сами.</p>
+            <ul class="svc-items">
+              <li>Щебёночное и асфальтобетонное основание, покрытие в 1–3 слоя</li>
+              <li>Малые объёмы — от 300 м², без «минимального заказа»</li>
+              <li>Бордюрный камень, водоотвод, колодцы под люки</li>
+              <li>Дорожная разметка, знаки, искусственные неровности</li>
+              <li>Тротуары и пешеходные зоны</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.12.3</span>
+            <span class="svc-title">Земляные работы и подготовка территории</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Начало любого объекта: геодезическая разбивка, выемки и насыпи, планировка. От качества земли зависит всё, что выше, — поэтому уплотнение контролируем послойно.</p>
+            <ul class="svc-items">
+              <li>Срезка грунта и вертикальная планировка</li>
+              <li>Разработка котлованов и траншей</li>
+              <li>Отсыпка насыпей с послойным уплотнением</li>
+              <li>Вывоз грунта, приём инертных материалов</li>
+              <li>Геодезический контроль отметок</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.11</span>
+            <span class="svc-title">Снос и разборка</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Снимаем с участка всё лишнее: здания, фундаменты, покрытия. Материал сортируем — бетон и кирпич уходят в дробление, металл сдаётся, площадка остаётся чистой.</p>
+            <ul class="svc-items">
+              <li>Демонтаж зданий, фундаментов, перекрытий</li>
+              <li>Срезка и вывоз металлоконструкций</li>
+              <li>Дробление бетона во вторичный щебень</li>
+              <li>Погрузка и вывоз строительного мусора</li>
+              <li>Подготовка площадки под новый цикл</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">42.21 / 42.22</span>
+            <span class="svc-title">Инженерные сети — вода, канализация, газ, связь</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Всё, что должно лежать под дорогой до того, как ляжет асфальт. Копаем, укладываем, опрессовываем и сдаём сети эксплуатирующим организациям.</p>
+            <ul class="svc-items">
+              <li>Водопровод и пожарные гидранты</li>
+              <li>Самотёчная и напорная канализация, колодцы</li>
+              <li>Газопроводы низкого и среднего давления</li>
+              <li>Кабельная канализация, связь, слаботочка</li>
+              <li>Подключения к действующим сетям</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.21</span>
+            <span class="svc-title">Электромонтажные работы</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Электроснабжение площадок и наружное освещение: от траншеи под кабель до включения опор. Освещение сдаём работающим — в прямом смысле.</p>
+            <ul class="svc-items">
+              <li>Кабельные линии 0,4 кВ в траншее и футлярах</li>
+              <li>Опоры освещения улиц, проездов и парковок</li>
+              <li>Щиты управления наружным освещением</li>
+              <li>Освещение пешеходных переходов</li>
+              <li>Пусконаладка и сдача в эксплуатацию</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.31–43.39</span>
+            <span class="svc-title">Отделочные работы</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Завершающий контур наших строек: приводим помещения зданий на объекте в состояние «можно работать». Делаем для себя и берём подряды со стороны.</p>
+            <ul class="svc-items">
+              <li>Штукатурные и малярные работы</li>
+              <li>Облицовка плиткой, устройство полов</li>
+              <li>Перегородки и подвесные потолки</li>
+              <li>Установка окон и дверей</li>
+              <li>Отделка под ключ с финишной уборкой</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= projects ======= -->
+<section class="dark" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>02 / Проекты</span>
+      <span class="sh-r">Нажмите на объект — фотографии и ход работ</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(32px,4vw,52px)">Построено, сдано, эксплуатируется</h2>
+    <div class="proj-grid" data-stagger>
+
+      <article class="proj s7 reveal" data-idx="0" tabindex="0" role="button" aria-label="Открыть проект: реконструкция улицы Сельхозтехники, Чебоксары">
+        <div class="proj-media">
+          <img src="https://picsum.photos/seed/sdi-obj1-1/1100/760.jpg" alt="Реконструкция улицы Сельхозтехники, Чебоксары" loading="lazy" width="1100" height="760" decoding="async">
+          <span class="proj-role">Генподряд</span>
+        </div>
+        <div class="proj-body">
+          <div><h3>Реконструкция ул. Сельхозтехники</h3><p class="proj-meta">Чебоксары · 3,2 км · 5 мес. · 2023</p></div>
+          <span class="proj-arr"><i data-lucide="arrow-up-right"></i></span>
+        </div>
+      </article>
+
+      <article class="proj s5 reveal" data-idx="1" tabindex="0" role="button" aria-label="Открыть проект: подъездная дорога к промпарку Заречный">
+        <div class="proj-media">
+          <img src="https://picsum.photos/seed/sdi-obj2-1/1100/760.jpg" alt="Подъездная дорога к промпарку «Заречный», Новочебоксарск" loading="lazy" width="1100" height="760" decoding="async">
+          <span class="proj-role">Генподряд</span>
+        </div>
+        <div class="proj-body">
+          <div><h3>Подъездная дорога к промпарку «Заречный»</h3><p class="proj-meta">Новочебоксарск · 5,8 км · 9 мес. · 2022–23</p></div>
+          <span class="proj-arr"><i data-lucide="arrow-up-right"></i></span>
+        </div>
+      </article>
+
+      <article class="proj s5 reveal" data-idx="2" tabindex="0" role="button" aria-label="Открыть проект: асфальтирование дворовых территорий микрорайона Волжский-3">
+        <div class="proj-media">
+          <img src="https://picsum.photos/seed/sdi-obj3-1/1100/760.jpg" alt="Асфальтирование дворовых территорий, микрорайон Волжский-3" loading="lazy" width="1100" height="760" decoding="async">
+          <span class="proj-role">Субподряд</span>
+        </div>
+        <div class="proj-body">
+          <div><h3>Дворовые территории мкр. Волжский-3</h3><p class="proj-meta">Чебоксары · 42 000 м² · 3 мес. · 2024</p></div>
+          <span class="proj-arr"><i data-lucide="arrow-up-right"></i></span>
+        </div>
+      </article>
+
+      <article class="proj s7 reveal" data-idx="3" tabindex="0" role="button" aria-label="Открыть проект: сети водоснабжения и водоотведения, село Ишлеи">
+        <div class="proj-media">
+          <img src="https://picsum.photos/seed/sdi-obj4-1/1100/760.jpg" alt="Прокладка сетей водоснабжения, село Ишлеи" loading="lazy" width="1100" height="760" decoding="async">
+          <span class="proj-role">Субподряд</span>
+        </div>
+        <div class="proj-body">
+          <div><h3>Сети водоснабжения и водоотведения, с. Ишлеи</h3><p class="proj-meta">Чебоксарский район · 7,4 км · 6 мес. · 2022</p></div>
+          <span class="proj-arr"><i data-lucide="arrow-up-right"></i></span>
+        </div>
+      </article>
+
+      <article class="proj wide reveal" data-idx="4" tabindex="0" role="button" aria-label="Открыть проект: дороги и освещение логопарка Волга-Порт">
+        <div class="proj-media">
+          <img src="https://picsum.photos/seed/sdi-obj5-1/1400/860.jpg" alt="Дороги и освещение логистического парка «Волга-Порт»" loading="lazy" width="1400" height="860" decoding="async">
+          <span class="proj-role">Генподряд</span>
+        </div>
+        <div class="proj-body">
+          <div>
+            <h3>Дороги и освещение логопарка «Волга-Порт»</h3>
+            <p class="proj-meta">Чебоксары · 4,1 км + 96 опор · 7 мес. · 2024</p>
+            <p class="proj-note">Усиленная дорожная одежда под нагрузку 40 т на ось; наружное освещение запустили раньше чистого асфальта — к открытию первого терминала.</p>
+          </div>
+          <span class="proj-arr"><i data-lucide="arrow-up-right"></i></span>
+        </div>
+      </article>
+
+    </div>
+    <p class="proj-hint reveal"><i data-lucide="mouse-pointer-click"></i>Каждый объект открывается с фотографиями: задача и решение по факту, без ретуши сметы</p>
+  </div>
+</section>
+
+<!-- ======= lightbox ======= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр проекта">
+  <div class="lb-back" data-close></div>
+  <div class="lb-panel">
+    <div class="lb-media">
+      <img id="lbImg" src="" alt="">
+      <span class="lb-count" id="lbCount">1 / 5</span>
+      <button class="lb-nav prev" id="lbPrev" aria-label="Предыдущее фото"><i data-lucide="chevron-left"></i></button>
+      <button class="lb-nav next" id="lbNext" aria-label="Следующее фото"><i data-lucide="chevron-right"></i></button>
+    </div>
+    <aside class="lb-info">
+      <div class="lb-top"><span id="lbIdx">Проект 01 / 05</span><button class="lb-close" data-close aria-label="Закрыть"><i data-lucide="x"></i></button></div>
+      <h3 class="lb-title" id="lbTitle"></h3>
+      <p class="lb-meta" id="lbMeta"></p>
+      <div id="lbText"></div>
+      <div class="lb-thumbs" id="lbThumbs"></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= quality band: macro texture divider ======= -->
+<section class="band">
+  <img class="band-bg" src="https://picsum.photos/seed/sdi-asphalt-tex/1600/700.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="700" decoding="async">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow"><span class="dash"></span>Контроль качества</p>
+      <h2>Каждый слой основания уплотняем до Ку&nbsp;≥&nbsp;0,98 — и подтверждаем лабораторией.</h2>
+    </div>
+    <div class="norms">
+      <div class="norm"><span>ГОСТ 9128-2013</span><span>смеси асфальтобетонные</span></div>
+      <div class="norm"><span>СНиП 3.06.03-85</span><span>автомобильные дороги</span></div>
+      <div class="norm"><span>СП 34.13330.2021</span><span>улицы и дороги городов</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= process ======= -->
+<section class="tex" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>03 / Как мы работаем</span>
+      <span class="sh-r">Порядок фиксируется до первой смены</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(40px,5vw,64px)">От звонка до акта — пять шагов</h2>
+    <ol class="steps" id="steps" data-stagger>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">01</span><h3>Обследование участка</h3><p>Выезжаем на место, замеряем, смотрим грунты, подъезды и существующие сети.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">02</span><h3>Смета</h3><p>Фиксируем объёмы и цену. Смета не «уточняется по ходу» — она окончательная.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">03</span><h3>Договор</h3><p>Сроки, этапы, гарантия и график работ — письменно, с ответственностью сторон.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">04</span><h3>Работы</h3><p>Своя техника и бригады. Еженедельные фотоотчёты и промеры — заказчику.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">05</span><h3>Сдача</h3><p>Исполнительная документация, гарантия, подписанный акт. Дорога остаётся с вами.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======= equipment & capacity ======= -->
+<section class="fleet-sec tex" id="fleet">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>04 / Техника и мощности</span>
+      <span class="sh-r">Весь парк — собственность компании</span>
+    </div>
+    <div class="fleet-grid">
+      <div class="fleet-side">
+        <h2 class="reveal">Свой парк. Своя ремзона. Свой темп.</h2>
+        <p class="lead reveal" style="margin-top:20px">Мы не зависим от аренды и графиков чужих машинистов — поэтому держим темп даже в высокий сезон и отвечаем за исправность машин сами.</p>
+        <div class="crew reveal">
+          <span class="crew-num">64</span>
+          <div><b>специалиста в штате</b><p>От геодезиста до машиниста катка — постоянные сотрудники, а не сезонный наём.</p></div>
+        </div>
+        <p class="fleet-note reveal">Ремзона — Чебоксары · ТО по регламенту производителя · резерв техники на сезон — 20%</p>
+      </div>
+      <ul class="fleet-rows" data-stagger>
+        <li class="reveal"><span class="f-q mono">2</span><div class="f-t"><h4>Асфальтоукладчики</h4><p>Vögele Super 1300-3i · ширина укладки до 5 м</p></div></li>
+        <li class="reveal"><span class="f-q mono">5</span><div class="f-t"><h4>Катки дорожные</h4><p>Bomag: вибрационные, пневмоколёсные, лёгкие</p></div></li>
+        <li class="reveal"><span class="f-q mono">6</span><div class="f-t"><h4>Экскаваторы гусеничные</h4><p>Hitachi ZX 130 / ZX 225 · ковш 0,5–1,2 м³</p></div></li>
+        <li class="reveal"><span class="f-q mono">3</span><div class="f-t"><h4>Погрузчики колёсные</h4><p>LiuGong 856 · ковш 3 м³</p></div></li>
+        <li class="reveal"><span class="f-q mono">12</span><div class="f-t"><h4>Самосвалы</h4><p>6×4 · 20 т · задняя разгрузка</p></div></li>
+        <li class="reveal"><span class="f-q mono">2</span><div class="f-t"><h4>Грейдеры</h4><p>Средний класс · профилирование основания</p></div></li>
+        <li class="reveal"><span class="f-q mono">1</span><div class="f-t"><h4>Дорожная фреза</h4><p>Wirtgen W 100 · холодное фрезерование</p></div></li>
+        <li class="f-total reveal"><span class="f-q mono">31</span><div class="f-t"><h4>Единица техники — в собственности</h4><p>Без аренды, субаренды и чужих графиков.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= about ======= -->
+<section class="tex" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>05 / О компании</span>
+      <span class="sh-r">Чебоксары, с 2020 года</span>
+    </div>
+    <div class="about-grid">
+      <figure class="about-fig reveal">
+        <img src="https://picsum.photos/seed/sdi-surveyor/900/1040.jpg" alt="Инженер-геодезист с нивелиром на строительной площадке" loading="lazy" width="900" height="1040" decoding="async">
+        <figcaption>Геодезическая разбивка перед укладкой основания. Чебоксарский район, 2024</figcaption>
+      </figure>
+      <div class="about-txt">
+        <h2 class="reveal">Мы строим то, на&nbsp;чём стоит город</h2>
+        <p class="reveal">СДИ основана в 2020 году в Чебоксарах. Начинали с дворовых проездов и подъездных дорог; сегодня ведём дороги, инженерные сети и благоустройство по всей Чувашии и в соседних регионах Поволжья. За четыре года — 67 контрактов и 214 километров построенных и отремонтированных дорог.</p>
+        <p class="reveal"><strong>Компанию основал и владеет ею её же директор.</strong> Один человек отвечает перед заказчиком за срок, цену и качество — от первого выезда на участок до подписания акта. Такой формат держит нас в тонусе: спрос всегда есть с кого, и это кто-то один.</p>
+        <div class="facts reveal">
+          <span class="fact">Основана — 2020</span>
+          <span class="fact">Форма — ООО</span>
+          <span class="fact">Директор = собственник</span>
+          <span class="fact">Офис и ремзона — Чебоксары</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= documents & guarantees ======= -->
+<section class="docs-sec tex" id="docs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>06 / Документы и гарантии</span>
+      <span class="sh-r">Только то, что подтверждается документом</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(32px,4vw,48px)">Проверьте нас до договора</h2>
+    <div class="doc-rows" data-stagger>
+      <div class="doc-row reveal">
+        <span class="d-key">СРО</span>
+        <div><h3>Членство в СРО строителей</h3><p>Допуск к работам, влияющим на безопасность объектов капитального строительства. Выписку из реестра пришлём вместе с коммерческим предложением.</p></div>
+        <span class="d-val">Выписка — по запросу</span>
+      </div>
+      <div class="doc-row reveal">
+        <span class="d-key">Страхование</span>
+        <div><h3>СМР застрахованы на весь период производства работ</h3><p>Полис действует на объекте с первого дня мобилизации до подписания акта. Копия полиса прикладывается к договору.</p></div>
+        <span class="d-val">60 000 000 ₽</span>
+      </div>
+      <div class="doc-row reveal">
+        <span class="d-key">Гарантия</span>
+        <div><h3>Гарантийные обязательства — в договоре, не на словах</h3><p>На дорожные работы — 3 года, на инженерные сети — 5 лет. Гарантийный выезд — в течение 3 рабочих дней.</p></div>
+        <span class="d-val">3 года / 5 лет</span>
+      </div>
+    </div>
+    <div class="docs-foot reveal">
+      <span>Работаем по ГОСТ 9128-2013 · СНиП 3.06.03-85 · СП 34.13330.2021</span>
+      <span>Исполнительная документация — в комплекте сдачи</span>
+      <a class="btn btn-steel" href="#contact">Запросить документы</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= contact ======= -->
+<section class="contact dark" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>07 / Контакты</span>
+      <span class="sh-r">Отвечаем в течение рабочего дня</span>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h2 class="reveal">Расскажите про участок — вернёмся со сметой</h2>
+        <p class="lead reveal" style="margin-bottom:36px">Достаточно адреса и пары строк о задаче. Если есть проект или схема — упомяните, попросим на почту.</p>
+        <form class="c-form reveal" id="quoteForm" novalidate>
+          <div class="form-body">
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name">Имя *</label>
+                <input id="f-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name">
+                <span class="f-err">Укажите имя — мы же должны знать, как спросить</span>
+              </div>
+              <div class="field">
+                <label for="f-org">Организация</label>
+                <input id="f-org" name="org" type="text" placeholder="ООО, администрация, УК — необязательно" autocomplete="organization">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-phone">Телефон *</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+              <span class="f-err">Нужен корректный телефон — иначе нам не с кем договориться</span>
+            </div>
+            <div class="field">
+              <label for="f-task">Опишите задачу</label>
+              <textarea id="f-task" name="task" rows="4" placeholder="Например: асфальтирование подъезда к складу, ~800 м², Чебоксары"></textarea>
+            </div>
+            <button class="btn btn-primary btn-submit" type="submit">Отправить заявку <i data-lucide="arrow-right"></i></button>
+            <p class="form-note">Отвечаем в течение одного рабочего дня. Без рассылок и звонков-роботов.</p>
+          </div>
+          <div class="form-done" role="status" aria-live="polite">
+            <i data-lucide="circle-check"></i>
+            <h3>Заявка принята</h3>
+            <p>Мы перезвоним вам в течение одного рабочего дня.</p>
+            <button type="button" class="link-reset" id="formReset">Отправить ещё одну заявку</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <ul class="c-list" data-stagger>
+          <li class="reveal"><i data-lucide="phone"></i><div><span class="c-k">Телефон</span><a class="c-v big" href="tel:+78352202424">+7 (8352) 20-24-24</a></div></li>
+          <li class="reveal"><i data-lucide="mail"></i><div><span class="c-k">Почта</span><a class="c-v" href="mailto:info@sdi21.ru">info@sdi21.ru</a></div></li>
+          <li class="reveal"><i data-lucide="map-pin"></i><div><span class="c-k">Адрес</span><span class="c-v">428028, Чувашия, г. Чебоксары, пр. Мира, 9, офис 12</span></div></li>
+          <li class="reveal"><i data-lucide="clock"></i><div><span class="c-k">Режим работы</span><span class="c-v">Пн–Пт 8:00–18:00 · Сб — по договорённости</span></div></li>
+        </ul>
+        <figure class="c-map reveal">
+          <iframe title="Офис СДИ на карте Чебоксар" src="https://www.openstreetmap.org/export/embed.html?bbox=47.2350%2C56.1250%2C47.2900%2C56.1520&amp;layer=mapnik&amp;marker=56.1385%2C47.2620" loading="lazy"></iframe>
+          <figcaption>Пр. Мира, 9 — офис и ремзона · наведите, чтобы включить цвет</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= footer ======= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top"><span class="logo-mark">СДИ</span><span class="logo-txt"><b>СДИ</b><small>Дорожное строительство</small></span></a>
+        <p class="promise">Мы строим то, на чём стоит город.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Карта сайта">
+        <ul>
+          <li class="f-h">Навигация</li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#process">Как работаем</a></li>
+          <li><a href="#fleet">Техника</a></li>
+        </ul>
+        <ul>
+          <li class="f-h">Компания</li>
+          <li><a href="#about">О компании</a></li>
+          <li><a href="#docs">Документы и гарантии</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <ul class="foot-contacts">
+          <li class="f-h">Связь</li>
+          <li><a href="tel:+78352202424">+7 (8352) 20-24-24</a></li>
+          <li><a href="mailto:info@sdi21.ru">info@sdi21.ru</a></li>
+          <li><span class="f-addr">Чебоксары, пр. Мира, 9<br>Пн–Пт 8:00–18:00</span></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-line" aria-hidden="true"></div>
+    <div class="foot-legal">
+      <span>ООО «СДИ» · ИНН 2124047083 · ОГРН 1202100002961 · ОКВЭД 42.11 — строительство автомобильных дорог и автомагистралей</span>
+      <span>Информация на сайте не является публичной офертой (ст. 437 ГК РФ) · © 2020–2025 ООО «СДИ»</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======= mobile sticky CTA ======= -->
+<div class="mbar" id="mbar">
+  <a class="mbar-phone" href="tel:+78352202424"><i data-lucide="phone"></i>+7 (8352) 20-24-24</a>
+  <a class="btn btn-primary" href="#contact">Смета</a>
+</div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+(function(){
+'use strict';
+const $=(s,c=document)=>c.querySelector(s);
+const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.lucide) lucide.createIcons();
+
+/* ---------- header: transparent over hero, solid after ---------- */
+const header=$('#header'),hero=$('#top');
+function headerState(){
+  header.classList.toggle('solid',window.scrollY>hero.offsetHeight-90);
+}
+
+/* ---------- mobile menu ---------- */
+const burger=$('#burger'),mnav=$('#mnav');
+burger.addEventListener('click',()=>{
+  const open=document.body.classList.toggle('menu-open');
+  burger.setAttribute('aria-expanded',open);
+  mnav.setAttribute('aria-hidden',!open);
+});
+ $$('#mnav a').forEach(a=>a.addEventListener('click',()=>{
+  document.body.classList.remove('menu-open');
+  burger.setAttribute('aria-expanded','false');
+}));
+
+/* ---------- scroll reveals (once, staggered in groups) ---------- */
+ $$('[data-stagger]').forEach(g=>$$('.reveal',g).forEach((el,i)=>el.style.transitionDelay=Math.min(i,7)*70+'ms'));
+if(RM){ $$('.reveal').forEach(el=>el.classList.add('in')); }
+else{
+  const io=new IntersectionObserver(es=>es.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.classList.add('in');
+      // drop the stagger delay after entry so hover states stay instant
+      en.target.addEventListener('transitionend',()=>en.target.style.transitionDelay='',{once:true});
+      io.unobserve(en.target);
+    }
+  }),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  $$('.reveal').forEach(el=>io.observe(el));
+}
+
+/* ---------- hero counters: 0 → target, 1.2s linear, once ---------- */
+function runCount(el){
+  const target=+el.dataset.count;
+  if(RM){el.textContent=target;return;}
+  const t0=performance.now();
+  (function tick(now){
+    const p=Math.min(1,(now-t0)/1200);
+    el.textContent=Math.round(target*p);
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+}
+const cio=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){runCount(en.target);cio.unobserve(en.target);}
+}),{threshold:.4});
+ $$('.count').forEach(el=>cio.observe(el));
+
+/* ---------- services accordion (400ms, orange left border on open) ---------- */
+ $$('.svc').forEach(card=>{
+  const btn=$('.svc-head',card);
+  btn.addEventListener('click',()=>{
+    const wasOpen=card.classList.contains('open');
+    $$('.svc.open').forEach(o=>{o.classList.remove('open');$('.svc-head',o).setAttribute('aria-expanded','false');});
+    if(!wasOpen){card.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+});
+
+/* ---------- projects data + lightbox ---------- */
+const PROJECTS=[
+ {seed:'sdi-obj1',title:'Реконструкция ул. Сельхозтехники',meta:'Чебоксары · 3,2 км · 5 мес. · Генподряд · 2023',photos:[1,2,3,4,5],
+  challenge:'Улица с интенсивным движением и ветхими сетями: реконструкция без полного перекрытия, с заменой водопровода прямо под новой дорожной одеждой.',
+  solution:'Работали в две захватки с временными объездами. Сети перенесли до начала укладки, основание усилили георешёткой. Сдали за 5 месяцев вместо проектных семи.'},
+ {seed:'sdi-obj2',title:'Подъездная дорога к промпарку «Заречный»',meta:'Новочебоксарск · 5,8 км · 9 мес. · Генподряд · 2022–2023',photos:[1,2,3,4,5],
+  challenge:'Дорога была нужна резидентам к началу отопительного сезона. Грунты слабые — обычная насыпь дала бы осадку в первый же год эксплуатации.',
+  solution:'Насыпь отсыпали карьерным грунтом с послойным уплотнением, коэффициент подтверждён лабораторией. График сжали, поставив два укладчика в одну смену.'},
+ {seed:'sdi-obj3',title:'Дворовые территории мкр. Волжский-3',meta:'Чебоксары · 42 000 м² · 3 мес. · Субподряд · 2024',photos:[1,2,3,4,5],
+  challenge:'Узкие дворы, припаркованные машины и люди, которым нужно жить на работающей площадке, — классический конфликт стройки и жителя.',
+  solution:'Двор делили на секторы, временные парковки и переходы согласовывали заранее, укладку вели только в дневное окно. Жалоб в администрацию не поступило.'},
+ {seed:'sdi-obj4',title:'Сети водоснабжения и водоотведения, с. Ишлеи',meta:'Чебоксарский район · 7,4 км · 6 мес. · Субподряд · 2022',photos:[1,2,3,4,5],
+  challenge:'Стальные трубы на пределе износа, трасса идёт вдоль действующей дороги, а вскрытия в нескольких точках были невозможны.',
+  solution:'Полиэтилен ПЭ100 SDR 17, проколы под проездами без вскрытия, пересечения — в защитных футлярах. Сети сданы эксплуатирующей организации с первого предъявления.'},
+ {seed:'sdi-obj5',title:'Дороги и освещение логопарка «Волга-Порт»',meta:'Чебоксары · 4,1 км + 96 опор · 7 мес. · Генподряд · 2024',photos:[1,2,3,4,5],
+  challenge:'Нагрузка до 40 тонн на ось и требование заказчика: освещение должно работать к запуску первого терминала — раньше чистого асфальта.',
+  solution:'Усиленная конструкция: 40 см щебёночного основания и 11 см асфальтобетона в два слоя. Освещение монтировали параллельно дорожным работам — терминал запустили вовремя.'}
+];
+const lb=$('#lb'),lbImg=$('#lbImg'),lbTitle=$('#lbTitle'),lbMeta=$('#lbMeta'),
+      lbText=$('#lbText'),lbThumbs=$('#lbThumbs'),lbCount=$('#lbCount'),lbIdx=$('#lbIdx');
+let cur=0,curIdx=0,lastFocus=null;
+const photoURL=(seed,i,w,h)=>`https://picsum.photos/seed/${seed}-${i}/${w}/${h}.jpg`;
+function setPhoto(i){
+  const n=PROJECTS[cur].photos.length;
+  curIdx=(i+n)%n;
+  $$('.lb-thumb',lbThumbs).forEach((t,ti)=>t.classList.toggle('act',ti===curIdx));
+  lbCount.textContent=(curIdx+1)+' / '+n;
+  lbImg.classList.remove('ready');
+  lbImg.src=photoURL(PROJECTS[cur].seed,curIdx+1,1280,860);
+  lbImg.alt=PROJECTS[cur].title+' — фото '+(curIdx+1);
+}
+function renderLb(){
+  const p=PROJECTS[cur];
+  lbTitle.textContent=p.title;
+  lbMeta.textContent=p.meta;
+  lbIdx.textContent='Проект '+String(cur+1).padStart(2,'0')+' / '+String(PROJECTS.length).padStart(2,'0');
+  lbText.innerHTML=
+    '<div class="lb-block"><span class="lb-k">Задача</span><p>'+p.challenge+'</p></div>'+
+    '<div class="lb-block"><span class="lb-k">Решение</span><p>'+p.solution+'</p></div>';
+  lbThumbs.innerHTML=p.photos.map((_,i)=>
+    '<button class="lb-thumb'+(i===0?' act':'')+'" data-i="'+i+'" aria-label="Фото '+(i+1)+'">'+
+    '<img src="'+photoURL(p.seed,i+1,180,130)+'" alt="" loading="lazy" width="180" height="130"></button>').join('');
+  setPhoto(0);
+}
+lbImg.addEventListener('load',()=>lbImg.classList.add('ready'));
+function openLb(i){
+  cur=i;renderLb();
+  lastFocus=document.activeElement;
+  lb.classList.add('open');
+  document.documentElement.classList.add('locked');
+  $('.lb-close',lb).focus();
+}
+function closeLb(){
+  lb.classList.remove('open');
+  document.documentElement.classList.remove('locked');
+  if(lastFocus)lastFocus.focus();
+}
+ $$('.proj').forEach(c=>{
+  c.addEventListener('click',()=>openLb(+c.dataset.idx));
+  c.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(+c.dataset.idx);}
+  });
+});
+ $$('[data-close]',lb).forEach(el=>el.addEventListener('click',closeLb));
+ $('#lbPrev').addEventListener('click',()=>setPhoto(curIdx-1));
+ $('#lbNext').addEventListener('click',()=>setPhoto(curIdx+1));
+lbThumbs.addEventListener('click',e=>{const b=e.target.closest('.lb-thumb');if(b)setPhoto(+b.dataset.i);});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')setPhoto(curIdx-1);
+  if(e.key==='ArrowRight')setPhoto(curIdx+1);
+});
+
+/* ---------- process timeline: orange "paint" follows scroll ---------- */
+const steps=$('#steps');
+function timelineState(){
+  if(!steps)return;
+  const r=steps.getBoundingClientRect(),vh=window.innerHeight;
+  const p=Math.min(1,Math.max(0,(vh*.82-r.top)/r.height));
+  steps.style.setProperty('--p',p.toFixed(4));
+  const vert=window.matchMedia('(max-width:860px)').matches;
+  const edge=(vert?steps.clientHeight:steps.clientWidth)*p;
+  $$('.step',steps).forEach(li=>{
+    const c=vert?li.offsetTop+6:li.offsetLeft+6;
+    li.classList.toggle('on',c<=edge+1);
+  });
+}
+
+/* ---------- one rAF-throttled scroll handler ---------- */
+let scheduled=false;
+function onScroll(){
+  if(scheduled)return;scheduled=true;
+  requestAnimationFrame(()=>{scheduled=false;headerState();timelineState();});
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll);
+headerState();timelineState();
+
+/* ---------- scrollspy for top nav ---------- */
+const spyMap={};
+ $$('.nav a').forEach(a=>spyMap[a.getAttribute('href').slice(1)]=a);
+const spy=new IntersectionObserver(es=>es.forEach(en=>{
+  const a=spyMap[en.target.id];
+  if(a&&en.isIntersecting){
+    $$('.nav a').forEach(x=>x.classList.remove('act'));
+    a.classList.add('act');
+  }
+}),{rootMargin:'-40% 0px -55% 0px'});
+Object.keys(spyMap).forEach(id=>{const s=document.getElementById(id);if(s)spy.observe(s);});
+
+/* ---------- form: inline validation + success state ---------- */
+const form=$('#quoteForm'),nameF=$('#f-name'),phoneF=$('#f-phone');
+const submitBtn=$('.btn-submit',form),submitLabel=submitBtn.innerHTML;
+const setErr=(input,bad)=>input.closest('.field').classList.toggle('err',bad);
+[nameF,phoneF].forEach(i=>i.addEventListener('input',()=>setErr(i,false)));
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const badName=!nameF.value.trim();
+  const badPhone=phoneF.value.replace(/\D/g,'').length<10;
+  setErr(nameF,badName);setErr(phoneF,badPhone);
+  if(badName||badPhone){(badName?nameF:phoneF).focus();return;}
+  submitBtn.disabled=true;submitBtn.classList.add('busy');submitBtn.innerHTML='Отправляем…';
+  setTimeout(()=>form.classList.add('sent'),900); // имитация отправки — здесь подключается бэкенд
+});
+ $('#formReset').addEventListener('click',()=>{
+  form.classList.remove('sent');form.reset();
+  submitBtn.disabled=false;submitBtn.classList.remove('busy');submitBtn.innerHTML=submitLabel;
+  nameF.focus();
+});
+
+/* ---------- mobile sticky CTA bar ---------- */
+const mbar=$('#mbar');
+let heroVis=true,contactVis=false;
+const mbarState=()=>mbar.classList.toggle('show',!heroVis&&!contactVis);
+new IntersectionObserver(([en])=>{heroVis=en.isIntersecting;mbarState();}).observe(hero);
+new IntersectionObserver(([en])=>{contactVis=en.isIntersecting;mbarState();},{threshold:.08}).observe($('#contact'));
+})();
+</script>
+</body>
+</html>
