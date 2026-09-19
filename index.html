@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#232629">
+<title>СДИ — строительство автодорог в Чувашии и Приволжье</title>
+<meta name="description" content="ООО «СДИ», Чебоксары. Асфальтирование, земляные работы, инженерные сети и благоустройство. Собственная техника и бригады, полный цикл.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<noscript><style>.reveal{opacity:1;transform:none}.svc-body{grid-template-rows:1fr}.hl>span{transform:none}.chip{opacity:1;transform:none}.wipe{clip-path:none}.wipe img{transform:none}</style></noscript>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ================================================================ -->
+<!-- ЛЕНДИНГ                                                          -->
+<!-- ================================================================ -->
+<div id="view-site">
+
+<header class="header" id="header">
+  <div class="wrap header-in">
+    <a class="logo" href="#top" aria-label="СДИ — на главную">
+      <span class="logo-mark">СДИ</span>
+      <span class="logo-txt"><b>СДИ</b><small>Дорожное строительство · Чебоксары</small></span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#services">Услуги</a>
+      <a href="#projects">Проекты</a>
+      <a href="#about">О компании</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="head-right">
+      <a class="head-phone" data-cfg="phoneHref" href="tel:+79871238024"><span data-cfg="phone">+7 987 123-80-24</span></a>
+      <a class="btn btn-primary head-cta" href="#contact">Запросить смету</a>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+  <nav class="mnav-links" aria-label="Мобильная навигация">
+    <a href="#services">Услуги <small>01</small></a>
+    <a href="#projects">Проекты <small>02</small></a>
+    <a href="#process">Как работаем <small>03</small></a>
+    <a href="#fleet">Техника <small>04</small></a>
+    <a href="#about">О компании <small>05</small></a>
+    <a href="#contact">Контакты <small>07</small></a>
+  </nav>
+  <div class="mnav-foot">
+    <a data-cfg="phoneHref" href="tel:+79871238024"><span data-cfg="phone">+7 987 123-80-24</span></a>
+    <a data-cfg="emailHref" href="mailto:sdi2482@mail.ru"><span data-cfg="email">sdi2482@mail.ru</span></a>
+    <span><span data-cfg="hours">Пн–Пт 8:00–18:00</span> · <span data-cfg="addrShort">Чебоксары, ул. Гражданская, 85А</span></span>
+  </div>
+</div>
+
+<!-- ======= hero ======= -->
+<section class="hero" id="top">
+  <img class="hero-img" src="https://picsum.photos/seed/sdi-hero-road/1920/1080.jpg" alt="Свежеуложенный асфальтобетон на строящейся дороге, вид с дрона" width="1920" height="1080" fetchpriority="high">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <span class="hero-coords" aria-hidden="true">56.1432° N · 47.2480° E — ЧЕБОКСАРЫ</span>
+  <div class="wrap hero-body">
+    <p class="eyebrow"><span class="dash"></span>ООО «СДИ» · Мы строим то, на чём стоит город</p>
+    <h1>
+      <span class="hl"><span>Строительство автодорог</span></span>
+      <span class="hl"><span>в Чувашии и&nbsp;Приволжье</span></span>
+    </h1>
+    <p class="hero-sub">Асфальтирование, земляные работы, инженерные сети и благоустройство — полный цикл собственной техникой и бригадами. От обследования участка до подписания акта.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact" data-mag>Запросить смету <i data-lucide="arrow-right"></i></a>
+      <a class="btn btn-ghost" href="#projects" data-mag>Смотреть проекты</a>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="wrap trust-grid">
+      <div class="trust-item">
+        <span class="t-num"><span class="count" data-cfg="founded" data-count="2020">0</span></span>
+        <span class="t-label">год основания компании</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-num acc"><span class="count" data-cfg="km" data-count="214">0</span></span>
+        <span class="t-label">км дорог построено и отремонтировано</span>
+      </div>
+      <div class="trust-item">
+        <span class="t-num"><span class="count" data-cfg="contracts" data-count="67">0</span></span>
+        <span class="t-label">контрактов завершено</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Асфальтирование</span><i class="tk-d"></i>
+    <span>Земляные работы</span><i class="tk-d"></i>
+    <span>Инженерные сети</span><i class="tk-d"></i>
+    <span>Наружное освещение</span><i class="tk-d"></i>
+    <span>Снос и демонтаж</span><i class="tk-d"></i>
+    <span>Благоустройство</span><i class="tk-d"></i>
+    <span>ГОСТ 9128-2013</span><i class="tk-d"></i>
+    <span>СНиП 3.06.03-85</span><i class="tk-d"></i>
+  </div>
+</div>
+
+<!-- ======= services ======= -->
+<section class="tex" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>01 / Услуги</span>
+      <span class="sh-r">От земли до исполнительной документации</span>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-side">
+        <h2 class="reveal">Один подрядчик на&nbsp;весь цикл</h2>
+        <p class="lead reveal" style="margin-top:20px">Ключевые этапы мы не передаём на сторону: дороги, сети и благоустройство ведут свои бригады на своей технике. Каждая группа работ — отдельное направление с понятным составом и кодом ОКВЭД.</p>
+        <p class="svc-note reveal"><i data-lucide="mouse-pointer-click"></i>Нажмите на карточку — раскроется состав работ</p>
+      </div>
+      <div class="svc-list" data-stagger>
+
+        <article class="svc open reveal">
+          <button class="svc-head" aria-expanded="true">
+            <span class="svc-code">42.11</span>
+            <span class="svc-title">Автомобильные дороги</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Городские улицы, подъездные пути, внутриплощадочные проезды — от щебёночного основания до разметки. Работаем по проекту, а если проекта нет — составляем техническое решение сами.</p>
+            <ul class="svc-items">
+              <li>Щебёночное и асфальтобетонное основание, покрытие в 1–3 слоя</li>
+              <li>Малые объёмы — от 300 м², без «минимального заказа»</li>
+              <li>Бордюрный камень, водоотвод, колодцы под люки</li>
+              <li>Дорожная разметка, знаки, искусственные неровности</li>
+              <li>Тротуары и пешеходные зоны</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.12.3</span>
+            <span class="svc-title">Земляные работы и подготовка территории</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Начало любого объекта: геодезическая разбивка, выемки и насыпи, планировка. От качества земли зависит всё, что выше, — поэтому уплотнение контролируем послойно.</p>
+            <ul class="svc-items">
+              <li>Срезка грунта и вертикальная планировка</li>
+              <li>Разработка котлованов и траншей</li>
+              <li>Отсыпка насыпей с послойным уплотнением</li>
+              <li>Вывоз грунта, приём инертных материалов</li>
+              <li>Геодезический контроль отметок</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.11</span>
+            <span class="svc-title">Снос и разборка</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Снимаем с участка всё лишнее: здания, фундаменты, покрытия. Материал сортируем — бетон и кирпич уходят в дробление, металл сдаётся, площадка остаётся чистой.</p>
+            <ul class="svc-items">
+              <li>Демонтаж зданий, фундаментов, перекрытий</li>
+              <li>Срезка и вывоз металлоконструкций</li>
+              <li>Дробление бетона во вторичный щебень</li>
+              <li>Погрузка и вывоз строительного мусора</li>
+              <li>Подготовка площадки под новый цикл</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">42.21 / 42.22</span>
+            <span class="svc-title">Инженерные сети — вода, канализация, газ, связь</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Всё, что должно лежать под дорогой до того, как ляжет асфальт. Копаем, укладываем, опрессовываем и сдаём сети эксплуатирующим организациям.</p>
+            <ul class="svc-items">
+              <li>Водопровод и пожарные гидранты</li>
+              <li>Самотёчная и напорная канализация, колодцы</li>
+              <li>Газопроводы низкого и среднего давления</li>
+              <li>Кабельная канализация, связь, слаботочка</li>
+              <li>Подключения к действующим сетям</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.21</span>
+            <span class="svc-title">Электромонтажные работы</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Электроснабжение площадок и наружное освещение: от траншеи под кабель до включения опор. Освещение сдаём работающим — в прямом смысле.</p>
+            <ul class="svc-items">
+              <li>Кабельные линии 0,4 кВ в траншее и футлярах</li>
+              <li>Опоры освещения улиц, проездов и парковок</li>
+              <li>Щиты управления наружным освещением</li>
+              <li>Освещение пешеходных переходов</li>
+              <li>Пусконаладка и сдача в эксплуатацию</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+        <article class="svc reveal">
+          <button class="svc-head" aria-expanded="false">
+            <span class="svc-code">43.31–43.39</span>
+            <span class="svc-title">Отделочные работы</span>
+            <span class="svc-x" aria-hidden="true"></span>
+          </button>
+          <div class="svc-body"><div class="svc-body-in"><div class="svc-body-cnt">
+            <p class="svc-desc">Завершающий контур наших строек: приводим помещения зданий на объекте в состояние «можно работать». Делаем для себя и берём подряды со стороны.</p>
+            <ul class="svc-items">
+              <li>Штукатурные и малярные работы</li>
+              <li>Облицовка плиткой, устройство полов</li>
+              <li>Перегородки и подвесные потолки</li>
+              <li>Установка окон и дверей</li>
+              <li>Отделка под ключ с финишной уборкой</li>
+            </ul>
+          </div></div></div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= projects (рендер из админки) ======= -->
+<section class="dark" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>02 / Проекты</span>
+      <span class="sh-r">Нажмите на объект — фотографии и ход работ</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(32px,4vw,52px)">Построено, сдано, эксплуатируется</h2>
+    <div class="proj-grid" id="projGrid" data-stagger></div>
+    <p class="proj-hint reveal"><i data-lucide="mouse-pointer-click"></i>Каждый объект открывается с фотографиями: задача и решение по факту</p>
+  </div>
+</section>
+
+<!-- ======= lightbox ======= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр проекта">
+  <div class="lb-back" data-close></div>
+  <div class="lb-panel">
+    <div class="lb-media">
+      <img id="lbImg" src="" alt="">
+      <span class="lb-count" id="lbCount">1 / 5</span>
+      <button class="lb-nav prev" id="lbPrev" aria-label="Предыдущее фото"><i data-lucide="chevron-left"></i></button>
+      <button class="lb-nav next" id="lbNext" aria-label="Следующее фото"><i data-lucide="chevron-right"></i></button>
+    </div>
+    <aside class="lb-info">
+      <div class="lb-top"><span id="lbIdx">Проект 01 / 05</span><button class="lb-close" data-close aria-label="Закрыть"><i data-lucide="x"></i></button></div>
+      <h3 class="lb-title" id="lbTitle"></h3>
+      <p class="lb-meta" id="lbMeta"></p>
+      <div class="lb-flow" id="lbFlow"></div>
+      <div class="lb-thumbs" id="lbThumbs"></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ======= quality band ======= -->
+<section class="band">
+  <img class="band-bg" src="https://picsum.photos/seed/sdi-asphalt-tex/1600/700.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="700" decoding="async">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow"><span class="dash"></span>Контроль качества</p>
+      <h2>Каждый слой основания уплотняем до Ку&nbsp;≥&nbsp;0,98 — и подтверждаем лабораторией.</h2>
+    </div>
+    <div class="norms">
+      <div class="norm"><span>ГОСТ 9128-2013</span><span>смеси асфальтобетонные</span></div>
+      <div class="norm"><span>СНиП 3.06.03-85</span><span>автомобильные дороги</span></div>
+      <div class="norm"><span>СП 34.13330.2021</span><span>улицы и дороги городов</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= process ======= -->
+<section class="tex" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>03 / Как мы работаем</span>
+      <span class="sh-r">Порядок фиксируется до первой смены</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(40px,5vw,64px)">От звонка до акта — пять шагов</h2>
+    <ol class="steps" id="steps" data-stagger>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">01</span><h3>Обследование участка</h3><p>Выезжаем на место, замеряем, смотрим грунты, подъезды и существующие сети.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">02</span><h3>Смета</h3><p>Фиксируем объёмы и цену. Смета не «уточняется по ходу» — она окончательная.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">03</span><h3>Договор</h3><p>Сроки, этапы, гарантия и график работ — письменно, с ответственностью сторон.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">04</span><h3>Работы</h3><p>Своя техника и бригады. Еженедельные фотоотчёты и промеры — заказчику.</p></li>
+      <li class="step reveal"><span class="node" aria-hidden="true"></span><span class="step-k">05</span><h3>Сдача</h3><p>Исполнительная документация, гарантия, подписанный акт. Дорога остаётся с вами.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======= fleet ======= -->
+<section class="fleet-sec tex" id="fleet">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>04 / Техника и мощности</span>
+      <span class="sh-r">Весь парк — собственность компании</span>
+    </div>
+    <div class="fleet-grid">
+      <div class="fleet-side">
+        <h2 class="reveal">Свой парк. Своя ремзона. Свой темп.</h2>
+        <p class="lead reveal" style="margin-top:20px">Мы не зависим от аренды и графиков чужих машинистов — поэтому держим темп даже в высокий сезон и отвечаем за исправность машин сами.</p>
+        <div class="crew reveal">
+          <span class="crew-num"><span class="count" data-cfg="crew" data-count="64" data-dur="1100">0</span></span>
+          <div><b>специалиста в штате</b><p>От геодезиста до машиниста катка — постоянные сотрудники, а не сезонный наём.</p></div>
+        </div>
+        <p class="fleet-note reveal">Ремзона — Чебоксары · ТО по регламенту производителя · резерв техники на сезон — 20%</p>
+      </div>
+      <ul class="fleet-rows" id="fleetList" data-stagger></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= about ======= -->
+<section class="tex" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>05 / О компании</span>
+      <span class="sh-r">Чебоксары, с 2020 года</span>
+    </div>
+    <div class="about-grid">
+      <figure class="about-fig wipe reveal">
+        <img src="https://picsum.photos/seed/sdi-surveyor/900/1040.jpg" alt="Инженер-геодезист с нивелиром на строительной площадке" loading="lazy" width="900" height="1040" decoding="async">
+        <figcaption>Геодезическая разбивка перед укладкой основания. Чебоксарский район, 2024</figcaption>
+      </figure>
+      <div class="about-txt">
+        <h2 class="reveal">Мы строим то, на&nbsp;чём стоит город</h2>
+        <p class="reveal">СДИ основана в <span data-cfg="founded">2020</span> году в Чебоксарах. Начинали с дворовых проездов и подъездных дорог; сегодня ведём дороги, инженерные сети и благоустройство по всей Чувашии и в соседних регионах Поволжья. За <span data-cfg="yearsActive">5</span> лет работы — <span data-cfg="contracts">67</span> контрактов и <span data-cfg="km">214</span> километров построенных и отремонтированных дорог.</p>
+        <p class="reveal"><strong>Компанию основал и владеет ею её же директор.</strong> Один человек отвечает перед заказчиком за срок, цену и качество — от первого выезда на участок до подписания акта. Такой формат держит нас в тонусе: спрос всегда есть с кого, и это кто-то один.</p>
+        <div class="facts reveal">
+          <span class="fact">Основана — 2020</span>
+          <span class="fact">Форма — ООО</span>
+          <span class="fact">Директор = собственник</span>
+          <span class="fact">Офис и ремзона — Чебоксары</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= documents ======= -->
+<section class="docs-sec tex" id="docs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>06 / Документы и гарантии</span>
+      <span class="sh-r">Только то, что подтверждается документом</span>
+    </div>
+    <h2 class="reveal" style="margin-bottom:clamp(32px,4vw,48px)">Проверьте нас до договора</h2>
+    <div class="doc-rows" data-stagger>
+      <div class="doc-row reveal">
+        <span class="d-key">СРО</span>
+        <div><h3>Членство в СРО строителей</h3><p>Допуск к работам, влияющим на безопасность объектов капитального строительства. Выписку из реестра пришлём вместе с коммерческим предложением.</p></div>
+        <span class="d-val">Выписка — по запросу</span>
+      </div>
+      <div class="doc-row reveal">
+        <span class="d-key">Страхование</span>
+        <div><h3>СМР застрахованы на весь период производства работ</h3><p>Полис действует на объекте с первого дня мобилизации до подписания акта. Копия полиса прикладывается к договору.</p></div>
+        <span class="d-val" data-cfg="ins">60 000 000 ₽</span>
+      </div>
+      <div class="doc-row reveal">
+        <span class="d-key">Гарантия</span>
+        <div><h3>Гарантийные обязательства — в договоре, не на словах</h3><p>На дорожные работы — <span data-cfg="wRoad">3 года</span>, на инженерные сети — <span data-cfg="wNet">5 лет</span>. Гарантийный выезд — в течение <span data-cfg="wResp">3 рабочих дней</span>.</p></div>
+        <span class="d-val" data-cfg="wBoth">3 года / 5 лет</span>
+      </div>
+    </div>
+    <div class="docs-foot reveal">
+      <span>Работаем по ГОСТ 9128-2013 · СНиП 3.06.03-85 · СП 34.13330.2021</span>
+      <span>Исполнительная документация — в комплекте сдачи</span>
+      <a class="btn btn-steel" href="#contact">Запросить документы</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= contact ======= -->
+<section class="contact dark" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sh-l"><span class="dash"></span>07 / Контакты</span>
+      <span class="sh-r">Отвечаем в течение рабочего дня</span>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h2 class="reveal">Опишите задачу — вернёмся со&nbsp;сметой</h2>
+        <p class="lead reveal" style="margin-bottom:36px">Достаточно адреса и пары строк. Выберите направление чипами или напишите своими словами — если есть проект, попросим на почту.</p>
+        <form class="c-form reveal" id="quoteForm" novalidate>
+          <div class="form-body">
+            <div class="form-row">
+              <div class="field">
+                <label for="f-name">Имя *</label>
+                <input id="f-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name">
+                <span class="f-err">Укажите имя — мы же должны знать, как спросить</span>
+              </div>
+              <div class="field">
+                <label for="f-org">Организация</label>
+                <input id="f-org" name="org" type="text" placeholder="ООО, администрация, УК — необязательно" autocomplete="organization">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-phone">Телефон *</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+              <span class="f-err">Нужен корректный телефон — иначе нам не с кем договориться</span>
+            </div>
+            <div class="chips" id="chips">
+              <span class="chips-k">Что нужно:</span>
+              <button type="button" class="chip" data-svc="Асфальтирование">Асфальтирование</button>
+              <button type="button" class="chip" data-svc="Земляные работы">Земляные работы</button>
+              <button type="button" class="chip" data-svc="Снос и демонтаж">Снос и демонтаж</button>
+              <button type="button" class="chip" data-svc="Инженерные сети">Инженерные сети</button>
+              <button type="button" class="chip" data-svc="Наружное освещение">Наружное освещение</button>
+              <button type="button" class="chip" data-svc="Благоустройство">Благоустройство</button>
+              <button type="button" class="chip" data-svc="Другое">Другое</button>
+            </div>
+            <div class="field">
+              <label for="f-task">Опишите задачу</label>
+              <textarea id="f-task" name="task" rows="4" placeholder="Например: асфальтирование подъезда к складу, ~800 м², Чебоксары"></textarea>
+            </div>
+            <input type="hidden" name="services" id="f-svc">
+            <button class="btn btn-primary btn-submit" type="submit">Отправить заявку <i data-lucide="arrow-right"></i></button>
+            <div class="form-assure">
+              <span><i data-lucide="clock-3"></i>Ответ за 1 рабочий день</span>
+              <span><i data-lucide="ruler"></i>Замер — бесплатно</span>
+              <span><i data-lucide="file-check"></i>Смета без обязательств</span>
+            </div>
+          </div>
+          <div class="form-done" role="status" aria-live="polite">
+            <i data-lucide="circle-check"></i>
+            <h3>Заявка принята</h3>
+            <p>Мы перезвоним вам в течение одного рабочего дня.</p>
+            <button type="button" class="link-reset" id="formReset">Отправить ещё одну заявку</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <ul class="c-list" data-stagger>
+          <li class="reveal"><i data-lucide="phone"></i><div><span class="c-k">Телефон</span><a class="c-v big" data-cfg="phoneHref" href="tel:+79871238024"><span data-cfg="phone">+7 987 123-80-24</span></a></div></li>
+          <li class="reveal"><i data-lucide="mail"></i><div><span class="c-k">Почта</span><a class="c-v" data-cfg="emailHref" href="mailto:sdi2482@mail.ru"><span data-cfg="email">sdi2482@mail.ru</span></a></div></li>
+          <li class="reveal"><i data-lucide="map-pin"></i><div><span class="c-k">Адрес</span><span class="c-v" data-cfg="addrFull">428023, Чувашская Республика — Чувашия, г. о. город Чебоксары, г. Чебоксары, ул. Гражданская, д. 85А, офис 1</span></div></li>
+          <li class="reveal"><i data-lucide="clock"></i><div><span class="c-k">Режим работы</span><span class="c-v" data-cfg="hours">Пн–Пт 8:00–18:00 · Сб — по договорённости</span></div></li>
+        </ul>
+        <figure class="c-map reveal">
+          <iframe title="Офис СДИ на карте Чебоксар" src="https://www.openstreetmap.org/export/embed.html?bbox=47.2350%2C56.1250%2C47.2900%2C56.1520&amp;layer=mapnik&amp;marker=56.1385%2C47.2620" loading="lazy"></iframe>
+          <figcaption><span data-cfg="addrShort">Чебоксары, ул. Гражданская, 85А</span> — офис · наведите, чтобы включить цвет</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= footer ======= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="#top"><span class="logo-mark">СДИ</span><span class="logo-txt"><b>СДИ</b><small>Дорожное строительство</small></span></a>
+        <p class="promise">Мы строим то, на чём стоит город.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Карта сайта">
+        <ul>
+          <li class="f-h">Навигация</li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#process">Как работаем</a></li>
+          <li><a href="#fleet">Техника</a></li>
+        </ul>
+        <ul>
+          <li class="f-h">Компания</li>
+          <li><a href="#about">О компании</a></li>
+          <li><a href="#docs">Документы и гарантии</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <ul class="foot-contacts">
+          <li class="f-h">Связь</li>
+          <li><a data-cfg="phoneHref" href="tel:+79871238024"><span data-cfg="phone">+7 987 123-80-24</span></a></li>
+          <li><a data-cfg="emailHref" href="mailto:sdi2482@mail.ru"><span data-cfg="email">sdi2482@mail.ru</span></a></li>
+          <li><span class="f-addr"><span data-cfg="addrShort">Чебоксары, ул. Гражданская, 85А</span><br><span data-cfg="hoursShort">Пн–Пт 8:00–18:00</span></span></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-line" aria-hidden="true"></div>
+    <div class="foot-legal">
+      <span>ООО «СДИ» · ИНН 2124047083 · ОГРН 1202100002961 · ОКВЭД 42.11 — строительство автомобильных дорог и автомагистралей</span>
+      <span>Информация на сайте не является публичной офертой (ст. 437 ГК РФ) · © 2020–2025 ООО «СДИ»</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="mbar-phone" data-cfg="phoneHref" href="tel:+79871238024"><i data-lucide="phone"></i><span data-cfg="phone">+7 987 123-80-24</span></a>
+  <a class="btn btn-primary" href="#contact">Смета</a>
+</div>
+
+</div><!-- /view-site -->
+
+<!-- ================================================================ -->
+<!-- СКРЫТАЯ АДМИНКА: /admin или /#admin                              -->
+<!-- ================================================================ -->
+
+<!-- экран пароля -->
+<div id="gate" class="gate" hidden>
+  <form class="gate-card" id="gateForm" autocomplete="off">
+    <span class="gate-mark">СДИ</span>
+    <h2>Закрытая зона</h2>
+    <p>Панель управления сайтом. Доступ — только для владельца.</p>
+    <input type="password" id="gatePw" placeholder="Пароль" autocomplete="current-password" autocapitalize="off" spellcheck="false">
+    <span class="err-t">Неверный пароль. Попробуйте ещё раз.</span>
+    <button class="btn btn-primary" type="submit">Войти <i data-lucide="arrow-right"></i></button>
+  </form>
+</div>
+
+<!-- панель -->
+<div id="view-admin" hidden>
+  <div class="admin-top">
+    <div class="wrap admin-top-in">
+      <span class="logo"><span class="logo-mark">СДИ</span><span class="logo-txt"><b>СДИ</b><small>Панель управления</small></span></span>
+      <span class="admin-title">Проекты · заявки · цифры и контакты</span>
+      <div class="admin-actions">
+        <button class="btn btn-steel" id="admExport" type="button"><i data-lucide="file-code"></i>Экспорт JSON</button>
+        <a class="btn btn-ghost" href="#top">На сайт</a>
+        <button class="btn btn-ghost" id="admLogout" type="button"><i data-lucide="log-out"></i>Выйти</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap admin-wrap">
+    <nav class="admin-tabs">
+      <button type="button" class="act" data-tab="projects">Проекты</button>
+      <button type="button" data-tab="leads">Заявки <b class="badge" id="leadBadge" hidden>0</b></button>
+      <button type="button" data-tab="settings">Цифры и контакты</button>
+    </nav>
+
+    <!-- вкладка: проекты -->
+    <section class="admin-tab act" id="tab-projects">
+      <div class="admin-main">
+        <div class="admin-left">
+          <div class="admin-left-head">
+            <span class="adm-count-line">Проектов: <b id="admCount">0</b></span>
+            <button class="btn btn-primary" id="admAdd" type="button"><i data-lucide="plus"></i>Добавить проект</button>
+            <span class="adm-hint">Изменения сохраняются в этом браузере и сразу видны на сайте. Чтобы данные увидели все посетители на GitHub Pages — кнопка «Экспорт JSON» вверху, результат вставляется в script.js.</span>
+          </div>
+          <div class="adm-list" id="admList"></div>
+        </div>
+        <aside class="admin-right" id="admFormWrap">
+          <form class="adm-form" id="admForm" novalidate>
+            <div class="adm-form-head">
+              <h3 id="admFormTitle">Новый проект</h3>
+              <button type="button" class="adm-close" id="admClose" aria-label="Свернуть форму"><i data-lucide="x"></i></button>
+            </div>
+            <div class="a-grid">
+              <div class="full"><label for="a-title">Название *</label><input type="text" id="a-title" placeholder="Реконструкция ул. Сельхозтехники"></div>
+              <div><label for="a-loc">Локация</label><input type="text" id="a-loc" placeholder="Чебоксары"></div>
+              <div><label for="a-scope">Объём</label><input type="text" id="a-scope" placeholder="3,2 км или 42 000 м²"></div>
+              <div><label for="a-dur">Срок</label><input type="text" id="a-dur" placeholder="5 мес."></div>
+              <div><label for="a-year">Год</label><input type="text" id="a-year" placeholder="2024"></div>
+              <div class="full">
+                <label for="a-role">Роль на объекте</label>
+                <select class="a-role" id="a-role"><option>Генподряд</option><option>Субподряд</option></select>
+              </div>
+              <div class="full">
+                <label>Фотографии (ссылки; первая — обложка)</label>
+                <div class="ph-list" id="admPhotos"></div>
+                <button type="button" class="adm-add-photo" id="admAddPhoto"><i data-lucide="plus"></i>Добавить фото</button>
+              </div>
+              <div class="full"><label for="a-note">Заметка для акцентной (широкой) карточки</label><textarea id="a-note" rows="2" style="min-height:60px" placeholder="Одно предложение-факт. Необязательно"></textarea></div>
+              <div class="full"><label for="a-ch">Задача</label><textarea id="a-ch" placeholder="Какая была проблема на объекте?"></textarea></div>
+              <div class="full"><label for="a-sol">Решение</label><textarea id="a-sol" placeholder="Как её решили — по факту, с цифрами"></textarea></div>
+            </div>
+            <div class="adm-form-foot">
+              <button class="btn btn-primary" id="admSave" type="submit">Добавить проект</button>
+              <button class="btn btn-ghost" id="admCancel" type="button">Отмена</button>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- вкладка: заявки -->
+    <section class="admin-tab" id="tab-leads">
+      <div class="lead-tools">
+        <span class="adm-count-line">Всего: <b id="leadTotal">0</b> · новых: <b id="leadNew">0</b></span>
+        <span class="lead-spacer"></span>
+        <button class="btn btn-steel" id="leadCsv" type="button"><i data-lucide="download"></i>Скачать CSV</button>
+        <button class="btn btn-ghost" id="leadClear" type="button">Очистить всё</button>
+      </div>
+      <div id="leadList"></div>
+      <p class="adm-note">Важно: статический сайт (GitHub Pages) не имеет сервера, поэтому заявка «сама собой» до вас не доедет — она сохраняется в браузере того, кто отправил. Чтобы получать заявки по-настоящему, укажите в «Цифрах и контактах» поле Webhook (бесплатные Formspree или Web3Forms — просто вставьте их endpoint, заявки будут приходить на вашу почту). Локальная копия здесь — для тестов.</p>
+    </section>
+
+    <!-- вкладка: настройки -->
+    <section class="admin-tab" id="tab-settings">
+      <form class="adm-form cfg-form" id="cfgForm" novalidate>
+        <div class="cfg-sec">
+          <h3><i data-lucide="phone"></i>Контакты на сайте</h3>
+          <div class="cfg-grid">
+            <div><label for="s-phone">Телефон</label><input type="text" id="s-phone"></div>
+            <div><label for="s-email">E-mail</label><input type="text" id="s-email"></div>
+            <div><label for="s-hours">Режим работы</label><input type="text" id="s-hours"></div>
+            <div style="grid-column:1/-1"><label for="s-addrShort">Адрес — краткий (футер, меню)</label><input type="text" id="s-addrShort"></div>
+            <div style="grid-column:1/-1"><label for="s-addrFull">Адрес — полный (блок контактов)</label><input type="text" id="s-addrFull"></div>
+          </div>
+        </div>
+        <div class="cfg-sec">
+          <h3><i data-lucide="hash"></i>Ключевые цифры</h3>
+          <div class="cfg-grid">
+            <div><label for="s-founded">Год основания</label><input type="text" id="s-founded" inputmode="numeric"></div>
+            <div><label for="s-km">Км дорог построено</label><input type="text" id="s-km" inputmode="numeric"></div>
+            <div><label for="s-contracts">Контрактов завершено</label><input type="text" id="s-contracts" inputmode="numeric"></div>
+            <div><label for="s-crew">Специалистов в штате</label><input type="text" id="s-crew" inputmode="numeric"></div>
+            <div><label for="s-wRoad">Гарантия — дороги</label><input type="text" id="s-wRoad"></div>
+            <div><label for="s-wNet">Гарантия — сети</label><input type="text" id="s-wNet"></div>
+            <div><label for="s-wResp">Гарантийный выезд</label><input type="text" id="s-wResp"></div>
+            <div><label for="s-ins">Страхование СМР</label><input type="text" id="s-ins"></div>
+          </div>
+        </div>
+        <div class="cfg-sec">
+          <h3><i data-lucide="truck"></i>Техника (количество, тип, модели)</h3>
+          <div id="cfgFleetList"></div>
+          <button type="button" class="adm-add-photo" id="cfgAddFleet"><i data-lucide="plus"></i>Добавить строку</button>
+        </div>
+        <div class="cfg-sec">
+          <h3><i data-lucide="send"></i>Получение заявок</h3>
+          <label for="s-webhook">Webhook (необязательно)</label>
+          <input type="text" id="s-webhook" placeholder="https:// — например endpoint Formspree / Web3Forms / свой бэкенд">
+        </div>
+        <div class="adm-form-foot">
+          <button class="btn btn-primary" type="submit">Сохранить и применить</button>
+          <button class="btn btn-ghost" type="button" id="cfgReset">Сбросить к исходным</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
