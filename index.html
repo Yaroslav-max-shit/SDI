@@ -59,7 +59,7 @@
 
 <!-- ======= hero ======= -->
 <section class="hero" id="top">
-  <img class="hero-img" id="heroImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%232B3036'/%3E%3Cstop offset='.62' stop-color='%23B4572B'/%3E%3Cstop offset='1' stop-color='%23E89A4B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23s)'/%3E%3Crect y='640' width='1920' height='440' fill='%23232629'/%3E%3C/svg%3E" alt="Дорога на закате — фирменная графика СДИ" width="1920" height="1080" fetchpriority="high">
+  <img class="hero-img" src="https://picsum.photos/seed/sdi-hero-road/1920/1080.jpg" alt="Свежеуложенный асфальтобетон на строящейся дороге, вид с дрона" width="1920" height="1080" fetchpriority="high">
   <div class="hero-scrim" aria-hidden="true"></div>
   <span class="hero-coords" aria-hidden="true">56.1432° N · 47.2480° E — ЧЕБОКСАРЫ</span>
   <div class="wrap hero-body">
@@ -257,7 +257,7 @@
 
 <!-- ======= quality band ======= -->
 <section class="band">
-  <img class="band-bg" id="bandImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='700'%3E%3Crect width='1600' height='700' fill='%23191D21'/%3E%3C/svg%3E" alt="" aria-hidden="true" loading="lazy" width="1600" height="700" decoding="async">
+  <img class="band-bg" src="https://picsum.photos/seed/sdi-asphalt-tex/1600/700.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="700" decoding="async">
   <div class="wrap">
     <div>
       <p class="eyebrow"><span class="dash"></span>Контроль качества</p>
@@ -298,13 +298,13 @@
     </div>
     <div class="about-grid">
       <figure class="about-fig wipe reveal">
-        <img id="aboutImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='1040'%3E%3Crect width='900' height='620' fill='%23C98A4B'/%3E%3Crect y='620' width='900' height='420' fill='%232C3034'/%3E%3C/svg%3E" alt="Геодезист с нивелиром на площадке — фирменная графика СДИ" loading="lazy" width="900" height="1040" decoding="async">
+        <img src="https://picsum.photos/seed/sdi-surveyor/900/1040.jpg" alt="Инженер-геодезист с нивелиром на строительной площадке" loading="lazy" width="900" height="1040" decoding="async">
         <figcaption>Геодезическая разбивка перед укладкой основания · Чебоксарский район</figcaption>
       </figure>
       <div class="about-txt">
         <h2 class="reveal">Мы строим то, на&nbsp;чём стоит город</h2>
         <p class="reveal">СДИ зарегистрирована в Чебоксарах 31 марта 2020 года. Основной профиль — строительство автомобильных дорог и автомагистралей (ОКВЭД 42.11); всего в ЕГРЮЛ 33 направления — от земляных работ и инженерных сетей до электрики и отделки. Поэтому объект можно закрыть одним подрядчиком, от земли до финиша.</p>
-        <p class="reveal"><strong>Компанию основал и владеет ею её же директор — <span data-cfg="director">Васильев Виталий Николаевич</span>.</strong> Запись в ЕГРЮЛ — с первого дня регистрации, учредитель один. Один человек отвечает перед заказчиком за срок, цену и качество — от первого выезда на участок до подписания акта. Такой формат держит нас в тонусе: спрос всегда есть с кого, и это кто-то один.</p>
+        <p class="reveal"><strong>Компанию основал и владеет ею её же директор — <span data-cfg="director">Василий Витальевич</span>.</strong> Запись в ЕГРЮЛ — с первого дня регистрации, учредитель один. Один человек отвечает перед заказчиком за срок, цену и качество — от первого выезда на участок до подписания акта. Такой формат держит нас в тонусе: спрос всегда есть с кого, и это кто-то один.</p>
         <div class="facts reveal">
           <span class="fact">Регистрация — 31.03.2020</span>
           <span class="fact">Директор = собственник</span>
@@ -342,6 +342,7 @@
       </div>
     </div>
 
+    <!-- реквизиты: моноширинная «выписка» -->
     <div class="req-card reveal">
       <div class="req-head">
         <h3>Реквизиты</h3>
@@ -553,7 +554,7 @@
                 <select class="a-role" id="a-role"><option>Генподряд</option><option>Субподряд</option></select>
               </div>
               <div class="full">
-                <label>Фотографии (ссылка https:// или код-слово — встроенная графика; первая — обложка)</label>
+                <label>Фотографии (ссылки; первая — обложка)</label>
                 <div class="ph-list" id="admPhotos"></div>
                 <button type="button" class="adm-add-photo" id="admAddPhoto"><i data-lucide="plus"></i>Добавить фото</button>
               </div>
@@ -605,7 +606,7 @@
         <div class="cfg-sec">
           <h3><i data-lucide="hash"></i>Маркеры в герое — цифра + подпись</h3>
           <div id="cfgMarkers"></div>
-          <p class="cfg-hint">Три цифры анимируются счётчиком от нуля. Третий маркер — акцентный (оранжевый).</p>
+          <p class="cfg-hint">Три цифры анимируются счётчиком от нуля. Третий маркер — акцентный (оранжевый). Если есть реальные цифры по км и контрактам — впишите их сюда.</p>
         </div>
         <div class="cfg-sec">
           <h3><i data-lucide="shield-check"></i>Гарантии (условия договора)</h3>
@@ -613,15 +614,6 @@
             <div><label for="s-wRoad">Дорожные работы</label><input type="text" id="s-wRoad"></div>
             <div><label for="s-wNet">Инженерные сети</label><input type="text" id="s-wNet"></div>
             <div><label for="s-wResp">Гарантийный выезд</label><input type="text" id="s-wResp"></div>
-          </div>
-        </div>
-        <div class="cfg-sec">
-          <h3><i data-lucide="image"></i>Фотографии сайта</h3>
-          <p class="cfg-hint" style="margin:0 0 12px">Пусто — используется встроенная графика (загружается всегда, даже офлайн). Вставьте прямую ссылку https:// на реальное фото, чтобы заменить. Битая ссылка автоматически заменяется встроенной графикой.</p>
-          <div class="cfg-grid">
-            <div><label for="s-hero">Фото героя (широкий кадр)</label><input type="text" id="s-hero" placeholder="https://…"></div>
-            <div><label for="s-about">Фото «О компании» (вертикальное)</label><input type="text" id="s-about" placeholder="https://…"></div>
-            <div><label for="s-band">Фон секции качества (текстура)</label><input type="text" id="s-band" placeholder="https://…"></div>
           </div>
         </div>
         <div class="cfg-sec">
