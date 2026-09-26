@@ -28,24 +28,25 @@ const CFG_DEFAULT={
   addrShort:'Чебоксары, ул. Гражданская, 85А',
   hours:'Пн–Пт 8:00–18:00 · Сб — по договорённости',
   hoursShort:'Пн–Пт 8:00–18:00',
-  founded:'2020', km:'214', contracts:'67', crew:'64',
-  wRoad:'3 года', wNet:'5 лет', wResp:'3 рабочих дня', ins:'60 000 000 ₽',
-  webhook:'',
-  fleet:[
-    {n:'2', t:'Асфальтоукладчики', d:'Vögele Super 1300-3i · ширина укладки до 5 м'},
-    {n:'5', t:'Катки дорожные', d:'Bomag: вибрационные, пневмоколёсные, лёгкие'},
-    {n:'6', t:'Экскаваторы гусеничные', d:'Hitachi ZX 130 / ZX 225 · ковш 0,5–1,2 м³'},
-    {n:'3', t:'Погрузчики колёсные', d:'LiuGong 856 · ковш 3 м³'},
-    {n:'12', t:'Самосвалы', d:'6×4 · 20 т · задняя разгрузка'},
-    {n:'2', t:'Грейдеры', d:'Средний класс · профилирование основания'},
-    {n:'1', t:'Дорожная фреза', d:'Wirtgen W 100 · холодное фрезерование'}
-  ]
+  director:'Васильев Виталий Николаевич',
+  founded:'2020',
+  markers:[
+    {v:'2020', l:'год регистрации компании'},
+    {v:'33',   l:'вида деятельности по ОКВЭД'},
+    {v:'1',    l:'директор и собственник — одно лицо', acc:true}
+  ],
+  wRoad:'3 года', wNet:'5 лет', wResp:'3 рабочих дня',
+  webhook:''
 };
 function loadJSON(key,fallback){
   try{const raw=localStorage.getItem(key);if(raw){const v=JSON.parse(raw);if(v)return v;}}catch(e){}
   return JSON.parse(JSON.stringify(fallback));
 }
 let cfg=loadJSON(CFG_KEY,CFG_DEFAULT);
+/* нормализация старых сохранений */
+if(!cfg.director)cfg.director=CFG_DEFAULT.director;
+if(!cfg.founded)cfg.founded=CFG_DEFAULT.founded;
+if(!Array.isArray(cfg.markers)||cfg.markers.length!==3)cfg.markers=JSON.parse(JSON.stringify(CFG_DEFAULT.markers));
 function saveCfg(){try{localStorage.setItem(CFG_KEY,JSON.stringify(cfg))}catch(e){}}
 
 const DEFAULTS=[
@@ -119,21 +120,18 @@ const cio=new IntersectionObserver(es=>es.forEach(en=>{
 }),{threshold:.4});
 function observeCounts(scope){$$('.count',scope).forEach(el=>cio.observe(el));}
 
-/* ================= КОНТАКТЫ И ЦИФРЫ ================= */
-const fleetList=$('#fleetList');
-function renderFleet(){
-  const total=cfg.fleet.reduce((s,f)=>s+(parseInt(f.n,10)||0),0);
-  fleetList.innerHTML=cfg.fleet.map(f=>
-    '<li class="reveal"><span class="f-q mono count" data-count="'+esc(f.n)+'" data-dur="800">0</span>'
-    +'<div class="f-t"><h4>'+esc(f.t)+'</h4><p>'+esc(f.d)+'</p></div></li>').join('')
-    +'<li class="f-total reveal"><span class="f-q mono count" data-count="'+total+'" data-dur="1000">0</span>'
-    +'<div class="f-t"><h4>Единица техники — в собственности</h4><p>Без аренды, субаренды и чужих графиков.</p></div></li>';
-  stagger(fleetList);watch(fleetList);observeCounts(fleetList);
+/* ================= КОНТАКТЫ, ЦИФРЫ, МАРКЕРЫ ================= */
+function renderMarkers(){
+  const g=$('#trustGrid');if(!g)return;
+  g.innerHTML=cfg.markers.map(m=>
+    '<div class="trust-item">'
+    +'<span class="t-num'+(m.acc?' acc':'')+'"><span class="count" data-count="'+esc(m.v)+'" data-dur="1200">0</span></span>'
+    +'<span class="t-label">'+esc(m.l)+'</span></div>').join('');
+  observeCounts(g);
 }
 function applyCfg(){
   const telHref='tel:'+String(cfg.phone).replace(/[^+\d]/g,'');
   const mailHref='mailto:'+cfg.email;
-  const yearsActive=Math.max(1,(new Date().getFullYear()-(parseInt(cfg.founded,10)||2020)));
   $$('[data-cfg]').forEach(el=>{
     const k=el.dataset.cfg;let v='';
     switch(k){
@@ -144,15 +142,10 @@ function applyCfg(){
       case 'hours':v=cfg.hours;break;
       case 'hoursShort':v=cfg.hoursShort;break;
       case 'founded':v=cfg.founded;break;
-      case 'km':v=cfg.km;break;
-      case 'contracts':v=cfg.contracts;break;
-      case 'crew':v=cfg.crew;break;
+      case 'director':v=cfg.director;break;
       case 'wRoad':v=cfg.wRoad;break;
       case 'wNet':v=cfg.wNet;break;
       case 'wResp':v=cfg.wResp;break;
-      case 'ins':v=cfg.ins;break;
-      case 'wBoth':v=cfg.wRoad+' / '+cfg.wNet;break;
-      case 'yearsActive':v=yearsActive;break;
       case 'phoneHref':el.setAttribute('href',telHref);return;
       case 'emailHref':el.setAttribute('href',mailHref);return;
     }
@@ -161,7 +154,7 @@ function applyCfg(){
       el.textContent=el.dataset.done?v:'0';
     }else{el.textContent=v;}
   });
-  renderFleet();
+  renderMarkers();
 }
 
 /* ================= СЕТКА ПРОЕКТОВ ================= */
@@ -373,7 +366,7 @@ function startEdit(i){
   admSave.textContent='Сохранить изменения';
 }
 function commitProjects(msg){
-  saveProjects();renderAdminList();renderProjects();toast(msg);
+  saveProjects();renderAdminList();renderProjects();if(msg)toast(msg);
 }
 admForm.addEventListener('submit',e=>{
   e.preventDefault();
@@ -397,7 +390,7 @@ admForm.addEventListener('submit',e=>{
     projects.push(Object.assign({id:uid()},data));
     toast('Проект добавлен');
   }
-  commitProjects('');resetForm();
+  commitProjects();resetForm();
 });
 admForm.addEventListener('input',e=>{if(e.target.classList.contains('err'))e.target.classList.remove('err');});
  $('#admCancel').addEventListener('click',()=>{resetForm();toast('Форма очищена');});
@@ -512,63 +505,50 @@ leadClear.addEventListener('click',()=>{
   toast('Все заявки удалены');
 });
 
-/* ---- настройки: цифры и контакты ---- */
-const cfgFleetList=$('#cfgFleetList');
-function cfgFleetRow(f){
+/* ---- настройки: контакты, цифры, маркеры ---- */
+const cfgMarkersBox=$('#cfgMarkers');
+function markerRow(m){
   const row=document.createElement('div');row.className='f-row';
-  row.innerHTML='<input class="n mono" type="text" inputmode="numeric" value="'+esc(f.n)+'" aria-label="Количество" placeholder="2">'
-    +'<input class="name" type="text" value="'+esc(f.t)+'" aria-label="Тип техники" placeholder="Тип техники">'
-    +'<input class="spec" type="text" value="'+esc(f.d)+'" aria-label="Модели" placeholder="Модели / параметры">'
-    +'<button type="button" class="ph-btn cf-del" aria-label="Убрать строку"><i data-lucide="x"></i></button>';
+  row.innerHTML='<input class="n mono" type="text" value="'+esc(m.v)+'" aria-label="Цифра" placeholder="2020">'
+    +'<input class="spec" type="text" value="'+esc(m.l)+'" aria-label="Подпись" placeholder="подпись к цифре">';
   return row;
 }
 function fillCfgForm(){
   $('#s-phone').value=cfg.phone;$('#s-email').value=cfg.email;
   $('#s-addrFull').value=cfg.addrFull;$('#s-addrShort').value=cfg.addrShort;
   $('#s-hours').value=cfg.hours;
-  $('#s-founded').value=cfg.founded;$('#s-km').value=cfg.km;
-  $('#s-contracts').value=cfg.contracts;$('#s-crew').value=cfg.crew;
-  $('#s-wRoad').value=cfg.wRoad;$('#s-wNet').value=cfg.wNet;
-  $('#s-wResp').value=cfg.wResp;$('#s-ins').value=cfg.ins;
+  $('#s-director').value=cfg.director;$('#s-founded').value=cfg.founded;
+  $('#s-wRoad').value=cfg.wRoad;$('#s-wNet').value=cfg.wNet;$('#s-wResp').value=cfg.wResp;
   $('#s-webhook').value=cfg.webhook||'';
-  cfgFleetList.innerHTML='';
-  cfg.fleet.forEach(f=>cfgFleetList.appendChild(cfgFleetRow(f)));
+  cfgMarkersBox.innerHTML='';
+  cfg.markers.forEach(m=>cfgMarkersBox.appendChild(markerRow(m)));
   lucide.createIcons();
 }
-cfgFleetList.addEventListener('click',e=>{
-  const b=e.target.closest('.cf-del');
-  if(b&&cfgFleetList.children.length>1)b.closest('.f-row').remove();
-});
- $('#cfgAddFleet').addEventListener('click',()=>{
-  cfgFleetList.appendChild(cfgFleetRow({n:'',t:'',d:''}));lucide.createIcons();
-});
  $('#cfgForm').addEventListener('submit',e=>{
   e.preventDefault();
   const phone=$('#s-phone').value.trim(),email=$('#s-email').value.trim();
   if(!phone||!email){toast('Телефон и e-mail обязательны');return;}
+  const hoursVal=$('#s-hours').value.trim()||CFG_DEFAULT.hours;
+  const markers=$$('.f-row',cfgMarkersBox).map(r=>({
+    v:$('.n',r).value.trim()||'0',
+    l:$('.spec',r).value.trim()||'—'
+  })).slice(0,3);
+  if(markers[2])markers[2].acc=true;
   cfg={
     phone:phone,email:email,
     addrFull:$('#s-addrFull').value.trim()||CFG_DEFAULT.addrFull,
     addrShort:$('#s-addrShort').value.trim()||CFG_DEFAULT.addrShort,
-    hours:$('#s-hours').value.trim()||CFG_DEFAULT.hours,
-    hoursShort:($('#s-hours').value.trim()||CFG_DEFAULT.hours).split('·')[0].trim(),
+    hours:hoursVal,
+    hoursShort:hoursVal.split('·')[0].trim(),
+    director:$('#s-director').value.trim()||CFG_DEFAULT.director,
     founded:$('#s-founded').value.trim()||'2020',
-    km:$('#s-km').value.trim()||'0',
-    contracts:$('#s-contracts').value.trim()||'0',
-    crew:$('#s-crew').value.trim()||'0',
+    markers:markers,
     wRoad:$('#s-wRoad').value.trim()||CFG_DEFAULT.wRoad,
     wNet:$('#s-wNet').value.trim()||CFG_DEFAULT.wNet,
     wResp:$('#s-wResp').value.trim()||CFG_DEFAULT.wResp,
-    ins:$('#s-ins').value.trim()||CFG_DEFAULT.ins,
-    webhook:$('#s-webhook').value.trim(),
-    fleet:$$('.f-row',cfgFleetList).map(r=>({
-      n:$('.n',r).value.trim()||'0',
-      t:$('.name',r).value.trim(),
-      d:$('.spec',r).value.trim()
-    })).filter(f=>f.t)
+    webhook:$('#s-webhook').value.trim()
   };
-  if(!cfg.fleet.length)cfg.fleet=JSON.parse(JSON.stringify(CFG_DEFAULT.fleet));
-  saveCfg();applyCfg();toast('Настройки применены — цифры обновлены на сайте');
+  saveCfg();applyCfg();toast('Настройки применены — сайт обновлён');
 });
 const cfgReset=$('#cfgReset');let cfgArmed=false;
 cfgReset.addEventListener('click',()=>{
@@ -578,7 +558,7 @@ cfgReset.addEventListener('click',()=>{
   cfg=JSON.parse(JSON.stringify(CFG_DEFAULT));
   saveCfg();applyCfg();fillCfgForm();
   cfgReset.textContent='Сбросить к исходным';cfgReset.classList.remove('btn-primary');cfgArmed=false;
-  toast('Цифры и контакты восстановлены');
+  toast('Контакты и цифры восстановлены');
 });
 
 /* ---- экспорт данных (для публикации) ---- */
